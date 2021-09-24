@@ -8,7 +8,6 @@
 	- prefix function <br>
 * Template: <br>
 * Trees: <br>
-	- dfs <br>
 	- bfs <br>
 	- lca <br>
 	- kth ancestor <br>
