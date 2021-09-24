@@ -1,5 +1,3 @@
-# Template files/code for CP.<br>
-
 ## To-Do:
 * Arrays:
 * Math:
