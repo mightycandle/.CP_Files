@@ -1,26 +1,26 @@
-## Template files/code for CP.<br>
+# Template files/code for CP.<br>
 
-# To-Do:
+## To-Do:
 * Arrays:
-<br>
+ <br>
 * Math:
 <br>
-* Graphs:
-	- dijkstra
-	- floyd warshal
-	- connected components
-	- kruskal & prim
+* Graphs: <br>
+	- dijkstra <br>
+	- floyd warshal <br>
+	- connected components <br>
+	- kruskal & prim <br>
 <br>
-* Trees:
-	- dfs
-	- bfs
-	- lca
-	- kth ancestor
-	- euler tour
+* Trees: <br>
+	- dfs <br>
+	- bfs <br>
+	- lca <br>
+	- kth ancestor <br>
+	- euler tour <br>
 <br>
-* Strings:
-	- string matching
-	- prefix function
+* Strings: <br>
+	- string matching <br>
+	- prefix function <br>
 <br>
-* Template:
+* Template: <br>
 <br>
