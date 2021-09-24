@@ -1,4 +1,4 @@
 dijkstra<br>
 floyd<br>
-kruskal-prim<br>
 connecteds<br>
+kruskal-prim<br>
