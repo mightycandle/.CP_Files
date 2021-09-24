@@ -2,10 +2,7 @@
 * Arrays:
 * Math:
 * Graphs: <br>
-	- dijkstra <br>
-	- floyd warshal <br>
 	- connected components <br>
-	- kruskal & prim <br>
 * Trees: <br>
 	- dfs <br>
 	- bfs <br>
