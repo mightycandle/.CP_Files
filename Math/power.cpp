@@ -13,7 +13,7 @@ int POW(int x,int y){
 	}
 	return a;
 }
-#define INV(x) POW(x,mod-2,mod)
+#define INV(x) POW(x,mod-2)
 
 int main(){
 	
