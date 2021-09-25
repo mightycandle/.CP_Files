@@ -1,7 +1,6 @@
 ## To-Do:
 * Arrays:
-* Graphs: <br>
-	- connected components <br>
+* Graphs:
 * Math:
 * Strings: <br>
 	- string matching <br>
