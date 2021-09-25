@@ -1,4 +1,4 @@
-## To-Do
+## To-Do:
 * Arrays:
 * Graphs:
 * Math:
