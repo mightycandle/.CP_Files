@@ -9,7 +9,7 @@ vector<int> bfs(int s){
 		auto u=q.front();
 		q.pop();
 		vis[u]=1;
-		for(auto v:u){
+		for(auto v:adj[u]){
 			if(vis[v]==0){
 				q.push(v);
 				dist[v]=dist[u]+1;
