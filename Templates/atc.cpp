@@ -84,7 +84,7 @@ namespace Force{
 using namespace Force;
 
 void solve(){
-
+	
 }
 
 signed main(){
