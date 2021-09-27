@@ -31,6 +31,7 @@ void union_set(int u,int v){
 void init_dsu(int n){
 	parent.assign(n+1,0);
 	depth.assign(n+1,0);
+	ranks.assign(n+1,0);
 	for(int i=1;i<=n;i++){
 		make_set(i);
 	}
