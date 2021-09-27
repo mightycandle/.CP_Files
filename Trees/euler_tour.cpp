@@ -4,7 +4,7 @@ vector<int> euler;
 vector<bool> vis;
 vector<vector<int>> adj;
 
-void dfs(int u,int par){
+void dfs(int u,int par=-1){
 	if(vis[u]==1){
 		return;
 	}
