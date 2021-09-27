@@ -1,12 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
+vector<vector<int>> adj;
 
 vector<vector<int>> dp;
 vector<int> tin,tout;
 vector<int> dist;
-int time=0;
+int n,l,timer=0;
 void dfs(int u,int par){
-	tin[u]=++time;
+	tin[u]=++timer;
 	dp[u][0]=par;
 	for(int i=1;i<=l;i++){
 		dp[u][i]=dp[dp[u][i-1]][i-1];
@@ -17,7 +18,7 @@ void dfs(int u,int par){
 			dfs(v,u);
 		}
 	}
-	tout[v]=++time;
+	tout[u]=++timer;
 }
 bool is_ancestor(int u,int v){
 	return tin[u]<=tin[v] && tout[u]>=tout[v];

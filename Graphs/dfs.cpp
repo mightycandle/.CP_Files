@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
+vector<bool> vis;
+vector<vector<int>> adj;
 
 void dfs(int u){
 	vis[u]=1;

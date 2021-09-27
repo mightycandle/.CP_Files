@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+vector<int> euler;
+vector<bool> vis;
+vector<vector<int>> adj;
 
 void dfs(int u,int par){
 	if(vis[u]==1){
@@ -12,7 +15,7 @@ void dfs(int u,int par){
 			continue;
 		}
 		dfs(v,u);
-		path.push_back(u);
+		euler.push_back(u);
 	}
 }
 

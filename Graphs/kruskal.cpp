@@ -1,10 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
+int n;
 
 class Edge{ public:
 	int x,y,wt;
 	bool operator < (Edge const& e){
-		return wt<e.wt;
+		return wt < e.wt;
 	}
 	void read(){
 		cin >> x >> y >> wt;
@@ -32,11 +33,11 @@ void union_set(int u,int v){
 		}
 	}
 }
-void kruskal(){
+void kruskal(vector<Edge> edges){
 	parent.resize(n+1);
 	ranks.resize(n+1);
 	for(int i=1;i<=n;i++){
-		make_set(i)
+		make_set(i);
 	}
 	int cost=0;
 	vector<Edge> res;
@@ -45,7 +46,7 @@ void kruskal(){
 		if(find_set(e.x)!=find_set(e.y)){
 			res.push_back(e);
 			cost+=e.wt;
-			union_set(e.u,e.v);
+			union_set(e.x,e.y);
 		}
 	}
 }

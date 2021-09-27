@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
+int n;
+vector<vector<pair<int,int>>> adj;
 
 vector<int> dijkstra(int s){
-	vector<int> dist(n,INT_MAX);
+	vector<int> dist(n+1,INT_MAX);
 	dist[s]=0;
 	priority_queue<pair<int,int>> pq;
 	pq.push({dist[s],s});

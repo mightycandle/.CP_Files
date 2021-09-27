@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
+int n;
+vector<vector<int>> adj;
 
 int cys=-1,cye=-1;
 vector<int> color,parent;

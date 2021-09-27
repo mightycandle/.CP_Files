@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+int n;
 
 void kth_ancestor(int u,int k){
 	vector<int> parent;

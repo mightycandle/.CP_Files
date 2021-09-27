@@ -1,5 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
+int n;
+vector<bool> vis;
+vector<int> path;
+vector<vector<int>> adj;
 
 void dfs(int u){
 	vis[u]=1;
