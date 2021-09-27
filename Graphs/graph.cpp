@@ -26,7 +26,7 @@ public:
 			parent[i]=i,depth[i]=1;
 		}
 	}
-	void read(int dir=0){
+	void input(int dir=0){
 		for(auto &uv:edges){
 			cin>>uv[0]>>uv[1];
 			adj[uv[0]].push_back(uv[1]);
@@ -68,7 +68,7 @@ public:
 			union_set(uv[0],uv[1]);
 		}
 	}
-	vector<int> get_bfs(int s){
+	vector<int> bfs(int s){
 		vector<int> dist(n+1,INT_MAX);
 		dist[s]=0;
 		queue<int> q;
@@ -85,11 +85,11 @@ public:
 		}
 		return dist;
 	}
-	void get_dfs(int u){
+	void dfs(int u){
 		vis[u]=1;
 		for(auto v:adj[u]){
 			if(!vis[v]){
-				get_dfs(v);
+				dfs(v);
 			}
 		}
 	}
