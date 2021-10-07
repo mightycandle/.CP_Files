@@ -15,7 +15,7 @@ bool Dfs(int u){
 		}
 		else if(color[v]==1){
 			cys=v,cye=u;
-			return 0;
+			return 1;
 		}
 	}
 	color[u]=2;
