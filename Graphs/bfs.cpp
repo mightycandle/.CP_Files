@@ -4,6 +4,7 @@ int n;
 vector<bool> vis;
 vector<vector<int>> adj;
 
+
 vector<int> bfs(int s){
 	vector<int> dist(n+1,INT_MAX);
 	queue<int> q;
