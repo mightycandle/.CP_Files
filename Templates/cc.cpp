@@ -14,11 +14,13 @@ namespace Force{
 		#define read(T, ...) T __VA_ARGS__;rd(__VA_ARGS__)
 	}
 	using namespace Custom;
+
 	namespace TypeDef{
 		#define ll  long long
 		#define vi  vector<int>
 		#define vvi vector<vi>
 		#define pb  push_back
+
 		tcTU using  M  = map<T,U>;
 		tcT  using  V  = vector<T>;
 		tcTU using  P  = pair<T,U>;
@@ -27,6 +29,7 @@ namespace Force{
 		tcT  using rpi = priority_queue<T,V<T>,greater<T>>;
 	}
 	using namespace TypeDef;
+
 	namespace Debug{
 		#ifdef vim
 			#define trace(...) dbg(#__VA_ARGS__, __VA_ARGS__)
@@ -46,6 +49,7 @@ namespace Force{
 		#endif
 	}
 	using namespace Debug;
+
 	namespace IO{
 		tcT  void rd(T& a){cin>>a;}
 		tcT  void rd(V<T>& a){for(auto &x:a)rd(x);}
@@ -54,20 +58,23 @@ namespace Force{
 		tcTA void rd(T& a,Args&... args){cin>>a;rd(args...);}
 
 		tcT  void print(T a,char sep='\n'){cout<<a<<sep;}
-		tcT  void print(V<T> a){each(x,a){cout<<x<<' ';}cout<<"\n";}
-		tcT  void print(VV<T> a){each(x,a){print(x);}}
+		tcT  void print(V<T> a,int r=0){rep(i,r,a.size())print(a[i],' ');cout<<'\n';}
+		tcT  void print(VV<T> a,int r=0){each(x,a){print(x,r);}}
 		tcTU void print(pair<T,U> p){cout<<p.first<<' '<<p.second<<"\n";}
 		tcTA void print(T a,Args... args){cout<<a<<' ';print(args...);}
 	}
 	using namespace IO;
+
 	namespace Helper{
 		int ceil(int a,int b){return (a+b-1)/b;}
 		void yes(){cout << "YES" << "\n";}
 		void  no(){cout << "NO" << "\n";}
+
 		tcT  T min(V<T> a){return *min_element(all(a));} 
 		tcT  T max(V<T> a){return *max_element(all(a));}
 		tcTU T min(T a,U b){if(a>b)a=b;return a;}
 		tcTU T max(T a,U b){if(a<b)a=b;return a;}
+
 		tcTU  void  amin(T& a,U b){if(a>b)a=b;}
 		tcTU  void  amax(T& a,U b){if(a<b)a=b;}
 		tcTU double pdiv(T a,U b){return (1.0*a)/(1.0*b);}
@@ -83,6 +90,7 @@ void solve(){
 signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
+
 	#ifdef local
 		freopen(".in","r",stdin);
 		freopen(".out","w",stdout);

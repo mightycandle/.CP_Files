@@ -58,8 +58,8 @@ namespace Force{
 		tcTA void rd(T& a,Args&... args){cin>>a;rd(args...);}
 
 		tcT  void print(T a,char sep='\n'){cout<<a<<sep;}
-		tcT  void print(V<T> a){each(x,a){cout<<x<<' ';}cout<<"\n";}
-		tcT  void print(VV<T> a){each(x,a){print(x);}}
+		tcT  void print(V<T> a,int r=0){rep(i,r,a.size())print(a[i],' ');cout<<'\n';}
+		tcT  void print(VV<T> a,int r=0){each(x,a){print(x,r);}}
 		tcTU void print(pair<T,U> p){cout<<p.first<<' '<<p.second<<"\n";}
 		tcTA void print(T a,Args... args){cout<<a<<' ';print(args...);}
 	}
