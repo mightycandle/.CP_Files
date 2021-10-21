@@ -9,6 +9,7 @@ vector<int> bfs(int s){
 	vector<int> dist(n+1,INT_MAX);
 	queue<int> q;
 	q.push(s);
+	dist[s]=0;
 	while(!q.empty()){
 		auto u=q.front();
 		q.pop();
