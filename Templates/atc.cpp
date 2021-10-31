@@ -4,6 +4,7 @@ namespace Force{
 	namespace Custom{
 		#define rep(i,a,b)  for(int i=a;(a<b)?i<b:i>b;(a<b)?i++:i--)
 		#define  revit(s)   for(auto it=s.begin();it!=s.end();it++)
+		#define  rsort(a)   sort((a).rbegin(),(a).rend())
 		#define    all(a)   a.begin(),a.end()
 		#define  each(x,v)  for(auto x:v)
 		#define make(a,b,c) a.assign(b,c)
@@ -12,26 +13,23 @@ namespace Force{
 		#define tcTU template<class T,class U>
 		#define tcTA template<class T,class ... Args>
 		#define read(T, ...) T __VA_ARGS__;rd(__VA_ARGS__)
-	}
-	using namespace Custom;
 
-	namespace TypeDef{
 		#define ll  long long
 		#define vi  vector<int>
-		#define vvi vector<vi>
+		#define pii pair<int,int>
+		#define vvi vector<vector<int>>
 		#define pb  push_back
 
-		tcTU using  M  = map<T,U>;
 		tcT  using  V  = vector<T>;
-		tcTU using  P  = pair<T,U>;
 		tcT  using  VV = vector<V<T>>;
 		tcT  using pri = priority_queue<T>;
 		tcT  using rpi = priority_queue<T,V<T>,greater<T>>;
 	}
-	using namespace TypeDef;
+	using namespace Custom;
 
 	namespace Debug{
-		#ifdef vim
+		#define nex cout << "\n";
+		#ifdef local
 			#define trace(...) dbg(#__VA_ARGS__, __VA_ARGS__)
 			tcT void dbg(const char* name,T&& a){
 				cerr << name << " is " << a << "\n";
@@ -47,6 +45,13 @@ namespace Force{
 		#else
 			#define trace(...) 1
 		#endif
+			
+		void subl(){
+			#ifdef fio
+				freopen(".in","r",stdin);
+				freopen(".out","w",stdout);
+			#endif
+		}
 	}
 	using namespace Debug;
 
@@ -66,18 +71,18 @@ namespace Force{
 	using namespace IO;
 
 	namespace Helper{
-		int ceil(int a,int b){return (a+b-1)/b;}
-		void yes(){cout << "YES" << "\n";}
-		void  no(){cout << "NO" << "\n";}
+		tcTU  void  amin(T& a,U b){if(a>b)a=b;}
+		tcTU  void  amax(T& a,U b){if(a<b)a=b;}
+		tcTU double pdiv(T a,U b){return (1.0*a)/(1.0*b);}
 
 		tcT  T min(V<T> a){return *min_element(all(a));} 
 		tcT  T max(V<T> a){return *max_element(all(a));}
 		tcTU T min(T a,U b){if(a>b)a=b;return a;}
 		tcTU T max(T a,U b){if(a<b)a=b;return a;}
-
-		tcTU  void  amin(T& a,U b){if(a>b)a=b;}
-		tcTU  void  amax(T& a,U b){if(a<b)a=b;}
-		tcTU double pdiv(T a,U b){return (1.0*a)/(1.0*b);}
+		
+		int ceil(int a,int b){return (a+b-1)/b;}
+		void yes(){cout << "Yes" << "\n";}
+		void  no(){cout << "No" << "\n";}
 	}
 	using namespace Helper;
 }
@@ -90,11 +95,6 @@ void solve(){
 signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
-
-	#ifdef local
-		freopen(".in","r",stdin);
-		freopen(".out","w",stdout);
-	#endif
 	
 	solve();
 }
