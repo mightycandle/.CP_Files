@@ -3,10 +3,10 @@ using namespace std;
 namespace Force{
 	namespace Custom{
 		#define rep(i,a,b)  for(int i=a;(a<b)?i<b:i>b;(a<b)?i++:i--)
-		#define  revit(s)   for(auto it=s.begin();it!=s.end();it++)
-		#define  rsort(a)   sort((a).rbegin(),(a).rend())
+		#define  revit(a)   for(auto it=a.begin();it!=a.end();it++)
+		#define   rall(a)   reverse((a).begin(),(a).end())
 		#define    all(a)   a.begin(),a.end()
-		#define  each(x,v)  for(auto x:v)
+		#define  each(x,a)  for(auto x:a)
 		#define make(a,b,c) a.assign(b,c)
 
 		#define tcT  template<class T>
@@ -16,6 +16,7 @@ namespace Force{
 
 		#define ll  long long
 		#define vi  vector<int>
+		#define vb  vector<bool>
 		#define pii pair<int,int>
 		#define vvi vector<vector<int>>
 		#define pb  push_back
@@ -59,7 +60,7 @@ namespace Force{
 		tcTA void rd(T& a,Args&... args){cin>>a;rd(args...);}
 
 		tcT  void print(T a,char sep='\n'){cout<<a<<sep;}
-		tcT  void print(V<T> a){each(x,a){cout<<x<<' ';}cout<<"\n";}
+		tcT  void print(V<T> a,int r=0){int n=a.size();rep(i,r,n)cout<<a[i]<<" \n"[i==n-1];}
 		tcT  void print(VV<T> a){each(x,a){print(x);}}
 		tcTU void print(pair<T,U> p){cout<<p.first<<' '<<p.second<<"\n";}
 		tcTA void print(T a,Args... args){cout<<a<<' ';print(args...);}
@@ -69,12 +70,11 @@ namespace Force{
 		tcTU  void  amin(T& a,U b){if(a>b)a=b;}
 		tcTU  void  amax(T& a,U b){if(a<b)a=b;}
 		tcTU double pdiv(T a,U b){return (1.0*a)/(1.0*b);}
-
 		tcT  T min(V<T> a){return *min_element(all(a));} 
 		tcT  T max(V<T> a){return *max_element(all(a));}
 		tcTU T min(T a,U b){if(a>b)a=b;return a;}
 		tcTU T max(T a,U b){if(a<b)a=b;return a;}
-		
+
 		int ceil(int a,int b){return (a+b-1)/b;}
 		void yes(){cout << "YES" << "\n";}
 		void  no(){cout << "NO" << "\n";}

@@ -1,11 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> parent,depth,ranks;
+vector<int> parent,depth;
 void make_set(int u){
 	if(parent[u]==0){
 		parent[u]=u;
-		ranks[u]=0;
 		depth[u]=1;
 	}
 }
@@ -23,15 +22,11 @@ void union_set(int u,int v){
 		}
 		parent[v]=u;
 		depth[u]+=depth[v];
-		if(ranks[u]==ranks[v]){
-			ranks[u]++;
-		}
 	}
 }
 void init_dsu(int n){
 	parent.assign(n+1,0);
 	depth.assign(n+1,0);
-	ranks.assign(n+1,0);
 	for(int i=1;i<=n;i++){
 		make_set(i);
 	}
