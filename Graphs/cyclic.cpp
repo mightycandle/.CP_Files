@@ -10,12 +10,13 @@ bool Dfs(int u){
 	for(auto v:adj[u]){
 		if(color[v]==0){
 			parent[v]=u;
-			if(Dfs(v))
-				return 1;
+			if(Dfs(v)){
+				return true;
+			}
 		}
 		else if(color[v]==1){
 			cys=v,cye=u;
-			return 1;
+			return true;
 		}
 	}
 	color[u]=2;
