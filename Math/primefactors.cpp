@@ -1,5 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
+// factors() is when sieve is done, and get_factors is generic
+vector<int> primes;
+
+vector<int> factors(int n){
+	vector<int> factors;
+	while(n>1){
+		factors.push_back(primes[n]);
+		n/=primes[n];
+	}
+	reverse(factors.begin(),factors.end());
+	return factors;
+}
 
 vector<int> get_factors(int n){
 	vector<int> factors;

@@ -26,6 +26,16 @@ public:
 			parent[i]=i,depth[i]=1;
 		}
 	}
+	void allot(int nn,vector<vector<int>> edge,int dir=0){
+		n=nn;
+		edges=edge;
+		for(auto v:edges){
+			adj[v[0]].push_back(v[1]);
+			if(dir==0){
+				adj[v[1]].push_back(v[0]);
+			}
+		}
+	}
 	void input(int dir=0){
 		for(auto &uv:edges){
 			cin>>uv[0]>>uv[1];
@@ -71,11 +81,9 @@ public:
 	vector<int> bfs(int s){
 		vector<int> dist(n+1,INT_MAX);
 		dist[s]=0;
-		queue<int> q;
-		q.push(s);
+		queue<int> q;q.push(s);
 		while(!q.empty()){
-			auto u=q.front();
-			q.pop();
+			auto u=q.front();q.pop();
 			for(auto v:adj[u]){
 				if(dist[v]>dist[u]+1){
 					dist[v]=dist[u]+1;
@@ -88,7 +96,7 @@ public:
 	void dfs(int u){
 		vis[u]=1;
 		for(auto v:adj[u]){
-			if(!vis[v]){
+			if(vis[v]==0){
 				dfs(v);
 			}
 		}
