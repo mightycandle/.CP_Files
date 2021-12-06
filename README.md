@@ -1,8 +1,7 @@
-## To-Do
+## Categories
 * Arrays:
 * Graphs:
 * Math:
-* Strings: <br>
-	- prefix function <br>
+* Strings:
 * Template: <br>
 * Trees:
