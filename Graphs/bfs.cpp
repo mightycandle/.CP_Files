@@ -1,12 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
 int n;
-vector<bool> vis;
 vector<vector<int>> adj;
 
 
-vector<int> bfs(int s){
+vector<int> bfs(int s=1){
 	vector<int> dist(n+1,INT_MAX);
+	vector<bool> vis(n+1);
 	queue<int> q;
 	q.push(s);
 	dist[s]=0;
