@@ -70,10 +70,14 @@ namespace Force{
 		tcTU  void  amin(T& a,U b){if(a>b)a=b;}
 		tcTU  void  amax(T& a,U b){if(a<b)a=b;}
 		tcTU double pdiv(T a,U b){return (1.0*a)/(1.0*b);}
+
 		tcT  T min(V<T> a){return *min_element(all(a));} 
 		tcT  T max(V<T> a){return *max_element(all(a));}
 		tcTU T min(T a,U b){if(a>b)a=b;return a;}
 		tcTU T max(T a,U b){if(a<b)a=b;return a;}
+
+		tcT int lwb(V<T> a,T x){return lower_bound(all(a),x)-a.begin();}
+		tcT int upb(V<T> a,T x){return upper_bound(all(a),x)-a.begin();}
 
 		int ceil(int a,int b){return (a+b-1)/b;}
 		void yes(){cout << "Yes" << "\n";}
@@ -82,6 +86,7 @@ namespace Force{
 	using namespace Helper;
 }
 using namespace Force;
+#define int ll
 
 void solve(){
 	

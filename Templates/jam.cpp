@@ -20,7 +20,6 @@ namespace Force{
 		#define pii pair<int,int>
 		#define vvi vector<vector<int>>
 		#define pb  push_back
-
 		tcT  using  V  = vector<T>;
 		tcT  using  VV = vector<V<T>>;
 		tcT  using pri = priority_queue<T>;
@@ -74,7 +73,8 @@ namespace Force{
 		tcT  T max(V<T> a){return *max_element(all(a));}
 		tcTU T min(T a,U b){if(a>b)a=b;return a;}
 		tcTU T max(T a,U b){if(a<b)a=b;return a;}
-
+		tcT int lwb(V<T> a,T x){return lower_bound(all(a),x)-a.begin();}
+		tcT int upb(V<T> a,T x){return upper_bound(all(a),x)-a.begin();}
 		int ceil(int a,int b){return (a+b-1)/b;}
 		void yes(){cout << "YES" << "\n";}
 		void  no(){cout << "NO" << "\n";}
