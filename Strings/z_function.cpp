@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> zalgo(string s){
+vector<int> z_function(string s){
 	int n=s.size();
 	vector<int> z(n);
 	for(int i=1,l=0,r=0;i<n;i++){
