@@ -45,7 +45,7 @@
 	- Depth First Search
 	- Distance between 2 nodes using LCA
 	- Euler tour of a tree
-	- K-th ancestor of a node
+	- K-th ancestor of a node using Binary Lifting
 	- Lowest Common Ancestor (LCA)
 	- Segment Tree implementation and queries
 	- Segment Tree: Lazy Propagation
