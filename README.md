@@ -23,12 +23,12 @@
 * Math:
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
-	- isPrime: check number is prime or not in $O(sqrt N)$
-	- Max exponent of a divisor $m$ in a number $n$
+	- isPrime: check number is prime or not in O(sqrt N)
+	- Max exponent of a divisor m in a number n
 	- Modular Arithmetic
-	- Pascal triangle for nCr in ```sqrt{2}```
-	- Power: $x^y$ with modulo
-	- Prime factors of a number $n$ with and without sieve
+	- Pascal triangle for nCr in O(N^2)
+	- Power: x^y with modulo
+	- Prime factors of a number n with and without sieve
 	- Sieve of Eratosthenes preprocessing
 * Strings:
 	- Count palindromic substrings
