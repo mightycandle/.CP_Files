@@ -1,11 +1,11 @@
 ## Topics
 * Arrays:
-	- Bitset shifted OR for splitting array
+	- Bitset shifted OR for optimal splitting array
 	- Compress array values to fit in N
-	- Knapsack (0-1) weight,value,W
+	- Knapsack (0-1) with weight, value, W parameters
 	- Longest Increasing Subsequence
 	- Power set of a vector
-	- Room allocation
+	- Room allocation: Optimal with numbering
 	- Unique vector and contiguous counts
 * Graphs:
 	- Breadth First Search
@@ -26,7 +26,7 @@
 	- isPrime: check number is prime or not in $O(sqrt N)$
 	- Max exponent of a divisor $m$ in a number $n$
 	- Modular Arithmetic
-	- Pascal triangle for nCr in $O(N^2)$
+	- Pascal triangle for nCr in $`\sqrt{2}`$
 	- Power: $x^y$ with modulo
 	- Prime factors of a number $n$ with and without sieve
 	- Sieve of Eratosthenes preprocessing
