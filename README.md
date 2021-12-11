@@ -26,7 +26,7 @@
 	- isPrime: check number is prime or not in $O(sqrt N)$
 	- Max exponent of a divisor $m$ in a number $n$
 	- Modular Arithmetic
-	- Pascal triangle for nCr in $`\sqrt{2}`$
+	- Pascal triangle for nCr in ```sqrt{2}```
 	- Power: $x^y$ with modulo
 	- Prime factors of a number $n$ with and without sieve
 	- Sieve of Eratosthenes preprocessing
