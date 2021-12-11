@@ -2,7 +2,7 @@
 * Arrays:
 	- Bitset shifted OR for optimal splitting array
 	- Compress array values to fit in N
-	- Knapsack (0-1) with weight, value, W parameters
+	- Knapsack (0-1) with dp[ n ] [ w+1 ]
 	- Longest Increasing Subsequence
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
@@ -16,19 +16,19 @@
 	- Depth First Search
 	- Dijkstra Algorithm
 	- Disjoin set union
-	- Disjoin set union: 2D
+	- Disjoin set union for 2D nodes
 	- Graph: class functions
 	- Kruskal algorithm implementation
 	- Topological sorting
 * Math:
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
-	- isPrime: check number is prime or not in O(sqrt N)
+	- isPrime: individual primality check in O(sqrt N)
 	- Max exponent of a divisor m in a number n
-	- Modular Arithmetic
+	- Modular Arithmetic functions
 	- Pascal triangle for nCr in O(N^2)
-	- Power: x^y with modulo
-	- Prime factors of a number n with and without sieve
+	- Power: Binary exponentiation with modulo
+	- Prime factorization: with and without sieve
 	- Sieve of Eratosthenes preprocessing
 * Strings:
 	- Count palindromic substrings
@@ -40,7 +40,7 @@
 	- Lexicographical comparison for dictionary sorting
 	- String adddition of two numbers
 	- String subtraction of two numbers
-	- Z function
+	- Z function implementation
 * Trees:
 	- Depth First Search
 	- Distance between 2 nodes using LCA
