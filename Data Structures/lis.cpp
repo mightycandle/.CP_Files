@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void list(vector<int> a){
+int lis(vector<int> a){
 	vector<int> dp;
 	for(auto x:a){
 		auto it=lower_bound(dp.begin(),dp.end(),x);
@@ -10,6 +10,7 @@ void list(vector<int> a){
 		}
 		else *it=x;
 	}
+	return dp.size();
 }
 
 int main(){
