@@ -30,6 +30,14 @@
 	- Power: Binary exponentiation with modulo
 	- Prime factorization: with and without sieve
 	- Sieve of Eratosthenes preprocessing
+* Segment Trees:
+	- Dynamic range minimum queries
+	- Dynamic range sum queries
+	- Segment Tree implementation and queries
+	- Segment Tree: Lazy Propagation
+	- Static range minimum queries
+	- Static range sum queries
+	- Static range XOR queries
 * Strings:
 	- Count palindromic substrings
 	- Hash value of a string
@@ -47,6 +55,4 @@
 	- Euler tour of a tree
 	- K-th ancestor of a node using Binary Lifting
 	- Lowest Common Ancestor (LCA)
-	- Segment Tree implementation and queries
-	- Segment Tree: Lazy Propagation
 	- Subtree sizes using DFS
