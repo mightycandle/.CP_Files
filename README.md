@@ -6,7 +6,9 @@
 	- Longest Increasing Subsequence
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
+	- Sliding window minimum of window size k
 	- Unique vector and contiguous counts
+	
 * Graph Theory:
 	- Breadth First Search
 	- Bipartite check
