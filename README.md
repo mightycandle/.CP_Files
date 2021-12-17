@@ -1,5 +1,5 @@
 ## Topics
-* Arrays:
+* Data Structures:
 	- Bitset shifted OR for optimal splitting array
 	- Compress array values to fit in N
 	- Knapsack (0-1) with dp[ n ] [ w+1 ]
@@ -7,7 +7,7 @@
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
 	- Unique vector and contiguous counts
-* Graphs:
+* Graph Theory:
 	- Breadth First Search
 	- Bipartite check
 	- Connected components: roots
@@ -20,7 +20,7 @@
 	- Graph: class functions
 	- Kruskal algorithm implementation
 	- Topological sorting
-* Math:
+* Mathematics:
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
 	- isPrime: individual primality check in O(sqrt N)
@@ -38,7 +38,7 @@
 	- Static range minimum queries
 	- Static range sum queries
 	- Static range XOR queries
-* Strings:
+* String Algorithms:
 	- Count palindromic substrings
 	- Hash value of a string
 	- Hash vector of a string
