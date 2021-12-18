@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n;
+// kth ancestor using binary lifitng
 
+int n;
 void kth_ancestor(int u,int k){
 	vector<int> parent;
 	int l=log2(n);

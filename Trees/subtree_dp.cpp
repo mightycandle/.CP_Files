@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
+// count subtree size of every node
+
 vector<vector<int>> adj;
 vector<int> subs;
 

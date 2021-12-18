@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// lowest common ancestor using binary lifting and timer arrays
 vector<vector<int>> adj;
 
 vector<vector<int>> dp;

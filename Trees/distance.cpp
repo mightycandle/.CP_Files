@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 vector<vector<int>> adj;
+// distance = d(u) + d(v) - 2*d(lca(u,v))
+// check if ancestor using t-in and t-out timer arrays
 
 vector<vector<int>> dp;
 vector<int> tin,tout;
