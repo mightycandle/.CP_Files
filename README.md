@@ -2,7 +2,7 @@
 * Data Structures:
 	- Bitset shifted OR for optimal splitting array
 	- Compress array values to fit in N
-	- Knapsack (0-1) with dp[ n ] [ w+1 ]
+	- Knapsack (0-1) with dp[n][w+1]
 	- Longest Increasing Subsequence
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
