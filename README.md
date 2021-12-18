@@ -25,7 +25,7 @@
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
 	- isPrime: individual primality check in O(sqrt N)
-	- Max exponent of a divisor m in a number n
+	- Maximum exponent of a divisor m in a number n
 	- Modular Arithmetic functions
 	- Pascal triangle for nCr in O(N^2)
 	- Power: Binary exponentiation with modulo
