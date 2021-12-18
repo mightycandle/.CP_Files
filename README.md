@@ -53,6 +53,7 @@
 	- String subtraction of two numbers
 	- Z function implementation
 * Trees:
+	- Breadth First Search
 	- Depth First Search
 	- Distance between 2 nodes using LCA
 	- Euler tour of a tree
