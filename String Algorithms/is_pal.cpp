@@ -6,7 +6,7 @@ bool is_pal(string s){
 		return 0;
 	}
 	string r=s;
-	reverse(all(r));
+	reverse(r.begin(),r.end());
 	return r==s;
 }
 

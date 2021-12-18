@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-vector<int> factors(int n){return {}};
+vector<int> factors(int n){return {};};
 // pre-req: sieve and primefactors function
 
 int max_exp(int n,int m){

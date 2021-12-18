@@ -3,7 +3,6 @@ using namespace std;
 int n;
 vector<vector<int>> adj;
 
-
 vector<int> bfs(int s=1){
 	vector<int> dist(n+1,INT_MAX);
 	vector<bool> vis(n+1);

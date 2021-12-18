@@ -8,7 +8,6 @@
 	- Room allocation: Optimal with numbering
 	- Sliding window minimum of window size k
 	- Unique vector and contiguous counts
-
 * Graph Theory:
 	- Breadth First Search
 	- Bipartite check
@@ -22,7 +21,6 @@
 	- Graph: class functions
 	- Kruskal algorithm implementation
 	- Topological sorting
-
 * Mathematics:
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
@@ -33,7 +31,6 @@
 	- Power: Binary exponentiation with modulo
 	- Prime factorization: with and without sieve
 	- Sieve of Eratosthenes preprocessing
-
 * Segment Trees:
 	- Dynamic range minimum queries
 	- Dynamic range sum queries
@@ -42,7 +39,6 @@
 	- Static range minimum queries
 	- Static range sum queries
 	- Static range XOR queries
-
 * String Algorithms:
 	- Count palindromic substrings
 	- Hash value of a string
@@ -54,7 +50,6 @@
 	- String adddition of two numbers
 	- String subtraction of two numbers
 	- Z function implementation
-	
 * Trees:
 	- Depth First Search
 	- Distance between 2 nodes using LCA

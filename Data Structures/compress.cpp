@@ -7,7 +7,7 @@ void compress(vector<int>& a){
 		s.insert(x);
 	}
 	map<int,int> change;
-	int cur=0;
+	int cur=1;
 	for(auto it=s.begin();it!=s.end();it++){
 		change[*it]=cur++;
 	}
