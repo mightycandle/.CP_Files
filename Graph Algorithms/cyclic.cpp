@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// check for cyclicity and find its start and end nodes
 int n;
 vector<vector<int>> adj;
 

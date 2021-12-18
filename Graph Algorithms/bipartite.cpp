@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// returns 1 if bipartite coloring is possible
 int n;
 vector<vector<int>> adj;
 

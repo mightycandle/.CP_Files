@@ -1,12 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
+// returns the number of connected components
 int n;
 vector<vector<int>> adj;
 vector<bool> vis;
 
 void dfs(int u){
 	vis[u]=1;
-	each(v,adj[u]){
+	for(auto v:adj[u]){
 		dfs(v);
 	}
 }

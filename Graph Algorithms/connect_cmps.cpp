@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
+// returns vector of the root (from dsu) of the connected component
+
 int n;
 vector<vector<int>> edges;
 
