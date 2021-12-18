@@ -8,7 +8,7 @@
 	- Room allocation: Optimal with numbering
 	- Sliding window minimum of window size k
 	- Unique vector and contiguous counts
-* Graph Theory:
+* Graph Algorithms:
 	- Breadth First Search
 	- Bipartite check
 	- Connected components: roots
