@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// returns hash value of a string of lower alphabets
 // check bounds of N before use
 // int -> long long
 

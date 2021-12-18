@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// returns the prefix array of hash values of the string
 // check bounds of N before use
 // int -> long long
 

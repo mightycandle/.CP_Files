@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// count palindromic substrings in O(N^2)
 
 int count_pals(string s){
 	int n=s.size();
