@@ -35,7 +35,7 @@
 	- Dynamic range minimum queries
 	- Dynamic range sum queries
 	- Segment Tree implementation and queries
-	- Segment Tree: Lazy Propagation
+	- Segment Tree: Lazy Propagation for range updates
 	- Static range minimum queries
 	- Static range sum queries
 	- Static range XOR queries
