@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+int mod=1e9+7;
 const int N=1e3+3;
 int ncr[N][N];
 void fill_ncr(){
