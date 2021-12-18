@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// operations w/ power set. traverse every bit and check from 0-n
 
 void PowerSet(vector<int> a){
 	int n=a.size();

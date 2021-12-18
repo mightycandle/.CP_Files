@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// optimal split of an array into 2 which gives min. sum difference
 
 const int N=1e6+6;
 void subset_split(vector<int> a){

@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// return contig. counts of values and the no-rep vector
 
 void uniqcnts(vector<int> a){
 	vector<int> uni={a[0]};
