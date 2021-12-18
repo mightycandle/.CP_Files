@@ -21,11 +21,12 @@
 	- Graph: class functions
 	- Kruskal algorithm implementation
 	- Topological sorting
-* Mathematics:
+* Number Theory:
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
 	- isPrime: individual primality check in O(sqrt N)
 	- Maximum exponent of a divisor m in a number n
+	- Minimum prime divisor of a number n
 	- Modular Arithmetic functions
 	- Pascal triangle for nCr in O(N^2)
 	- Power: Binary exponentiation with modulo
