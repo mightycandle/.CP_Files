@@ -44,6 +44,7 @@
 	- Hash value of a string
 	- Hash vector of a string
 	- isPalindrome: check if a string is a palindrome or not
+	- isSubsequence: check if a string is a subsequence of the other
 	- KMP Prefix Function: longest prefix that is a suffix
 	- Longest Common Subsequence of 2 strings
 	- Lexicographical comparison for dictionary sorting
