@@ -1,6 +1,6 @@
 ## Topics
 * Data Structures:
-	- Bitset shifted OR for optimal splitting array
+	- Bitset approach: array partition with minimum sum difference
 	- Compress array values to fit in N
 	- Knapsack (0-1) with dp[n][w+1]
 	- Longest Increasing Subsequence
