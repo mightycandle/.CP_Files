@@ -59,6 +59,7 @@
 * Trees:
 	- Breadth First Search
 	- Depth First Search
+	- Diameter of a tree
 	- Distance between 2 nodes using LCA
 	- Euler tour of a tree
 	- K-th ancestor of a node using Binary Lifting
