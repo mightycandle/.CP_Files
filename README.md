@@ -4,9 +4,11 @@
 	- Compress array values to fit in N
 	- Knapsack (0-1) with dp[n][w+1]
 	- Longest Increasing Subsequence
+	- Merge overalapping intervals
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
 	- Sliding window minimum of window size k
+	- Three sum problem
 	- Unique vector and contiguous counts
 * Graph Algorithms:
 	- Breadth First Search
@@ -32,6 +34,7 @@
 	- Power: Binary exponentiation with modulo
 	- Prime factorization: with and without sieve
 	- Sieve of Eratosthenes preprocessing
+	- Square root of a number in O(log n) using binary search
 * Segment Trees:
 	- Dynamic range minimum queries
 	- Dynamic range sum queries
@@ -41,7 +44,8 @@
 	- Static range sum queries
 	- Static range XOR queries
 * String Algorithms:
-	- Count palindromic substrings
+	- Counting palindromic substrings of a string
+	- Edit distance of two strings
 	- Hash value of a string
 	- Hash vector of a string
 	- isPalindrome: check if a string is a palindrome or not
