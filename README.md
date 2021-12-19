@@ -11,17 +11,17 @@
 	- Three sum problem
 	- Unique vector and contiguous counts
 * Graph Algorithms:
-	- Breadth First Search
-	- Bipartite check
-	- Connected components: roots
-	- Connected components: counts
-	- Cyclic check
+	- Breadth First Search: distances
+	- Bipartite graph check
+	- Connected components: finding roots
+	- Connected components: finding sizes
+	- Cyclicity check in O(M)
 	- Depth First Search
-	- Dijkstra Algorithm
-	- Disjoin set union
+	- Dijkstra Algorithm: shortest paths
+	- Disjoin set union implementation
 	- Disjoin set union for 2D nodes
 	- Graph: class functions
-	- Kruskal algorithm implementation
+	- Kruskal algorithm for Minimum Spanning Tree (MST)
 	- Topological sorting
 * Number Theory:
 	- Factorial with nCr modulo p queries
