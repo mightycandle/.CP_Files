@@ -1,13 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
+// distance = d(u) + d(v) - 2*d(lca(u,v)), checking if ancestor using t-in and t-out timer arrays
+// dfs should be an init function.
+int n;
 vector<vector<int>> adj;
-// distance = d(u) + d(v) - 2*d(lca(u,v))
-// check if ancestor using t-in and t-out timer arrays
 
 vector<vector<int>> dp;
-vector<int> tin,tout;
-vector<int> dist;
-int n,l,timer=0;
+vector<int> tin,tout,dist;
+int l,timer=0;
+
 void dfs(int u,int par){
 	tin[u]=++timer;
 	dp[u][0]=par;
@@ -22,26 +23,26 @@ void dfs(int u,int par){
 	}
 	tout[u]=++timer;
 }
-bool is_ancestor(int u,int v){
-	return tin[u]<=tin[v] && tout[u]>=tout[v];
-}
-int lca(int u,int v){
-	if(is_ancestor(u,v)){
-		return u;
-	}
-	if(is_ancestor(v,u)){
-		return v;
-	}
-	for(int i=l;i>=0;i--){
-		if(!is_ancestor(dp[u][i],v)){
-			u=dp[u][i];
-		}
-	}
-	return dp[u][0];
-}
+
 int distance(int x,int y){
-	int z=lca(x,y);
-	return abs(dist[x]+dist[y]-(dist[z]<<1));
+	auto is_ancestor=[&](int u,int v)->bool{
+		return tin[u]<=tin[v] && tout[u]>=tout[v];
+	};
+	auto lca=[&](int u,int v)->int{
+		if(is_ancestor(u,v)){
+			return u;
+		}
+		if(is_ancestor(v,u)){
+			return v;
+		}
+		for(int i=l;i>=0;i--){
+			if(!is_ancestor(dp[u][i],v)){
+				u=dp[u][i];
+			}
+		}
+		return dp[u][0];
+	};
+	return abs(dist[x]+dist[y]-(dist[lca(x,y)]<<1));
 }
 
 int main(){

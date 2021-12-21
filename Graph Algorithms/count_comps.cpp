@@ -3,23 +3,21 @@ using namespace std;
 // returns the number of connected components
 int n;
 vector<vector<int>> adj;
-vector<bool> vis;
-
-void dfs(int u){
-	vis[u]=1;
-	for(auto v:adj[u]){
-		dfs(v);
-	}
-}
 
 int count_connected_comps(){
-	vis.assign(n+1,0);
+	vector<bool> vis(n+1);
 	int cnt=0;
-	for(int i=1;i<=n;i++){
-		if(vis[i]==0){
-			cnt++;
-			dfs(i);
+	auto dfs=[&](int u,auto &&dfs)->void{
+		vis[u]=1;
+		for(auto v:adj[u]){
+			if(vis[v]==0){
+				dfs(v,dfs);
+			}
 		}
+	};
+	for(int i=1;i<=n and vis[i]==0;i++){
+		cnt++;
+		dfs(i,dfs);
 	}
 	return cnt;
 }

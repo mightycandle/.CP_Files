@@ -5,6 +5,7 @@
 	- Knapsack (0-1) with dp[n][w+1]
 	- Longest Increasing Subsequence
 	- Merge overalapping intervals
+	- MEX (Minimum Excluded Value) of a vector
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
 	- Sliding window minimum of window size k
@@ -15,7 +16,7 @@
 	- Bipartite graph check
 	- Connected components: finding roots
 	- Connected components: finding sizes
-	- Cyclicity check in O(M)
+	- Cyclicity check and retrieve path in O(M)
 	- Depth First Search
 	- Dijkstra Algorithm: shortest paths
 	- Disjoin set union implementation

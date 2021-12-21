@@ -2,18 +2,23 @@
 using namespace std;
 // count subtree size of every node
 
+int n;
 vector<vector<int>> adj;
-vector<int> subs;
 
-void dfs(int u=1,int p=0){
-	for(auto v:adj[u]){
-		if(v==p){
-			continue;
+vector<int> get_subtree(){
+	vector<int> dp(n+1);
+	auto dfs=[&](int u,int par,auto&& dfs)->void{
+		for(auto v:adj[u]){
+			if(v==par){
+				continue;
+			}
+			dfs(v,u,dfs);
+			dp[u]+=dp[v];
 		}
-		dfs(v,u);
-		subs[u]+=subs[v];
-	}
-	subs[u]++;
+		dp[u]++;
+	};
+	dfs(1,0,dfs);
+	return dp;
 }
 
 int main(){

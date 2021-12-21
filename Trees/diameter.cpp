@@ -1,28 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
+int n;
 vector<vector<int>> adj;
-vector<bool> vis;
-vector<int> dist;
 
-void dfs(int u,int par=0){
-	vis[u]=1;
-	for(auto v:adj[u]){
-		if(vis[v] or v==par){
-			continue;
-		}
-		dist[v]=dist[u]+1;
-		dfs(v,u);
-	}
-}
 int get_diameter(){
-	int n=adj.size();
-	dist.assign(n,0);
-	vis.assign(n,0);
-	dfs(1);
+	vector<int> dist(n+1),vis(n+1);
+	auto dfs=[&](int u,int par,auto&& dfs)->void{
+		vis[u]=1;
+		for(auto v:adj[u]){
+			if(vis[v] or v==par){
+				continue;
+			}
+			dist[v]=dist[u]+1;
+			dfs(v,u,dfs);
+		}
+	};
+	dfs(1,0,dfs);
 	int root=max_element(dist.begin(),dist.end())-dist.begin();
 	dist.assign(n,0);
 	vis.assign(n,0);
-	dfs(root);
+	dfs(root,0,dfs);
 	return *max_element(dist.begin(),dist.end());
 }
 

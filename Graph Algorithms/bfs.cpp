@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// returns distance
 int n;
 vector<vector<int>> adj;
 

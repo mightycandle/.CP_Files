@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// just a dfs traversal
 vector<bool> vis;
 vector<vector<int>> adj;
 

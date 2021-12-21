@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// returns distances from source
 int n;
 vector<vector<pair<int,int>>> adj;
 

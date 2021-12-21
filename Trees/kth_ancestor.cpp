@@ -3,7 +3,7 @@ using namespace std;
 // kth ancestor using binary lifitng
 
 int n;
-void kth_ancestor(int u,int k){
+int kth_ancestor(int u,int k){
 	vector<int> parent;
 	int l=log2(n);
 	int dp[n+1][l+1];
@@ -26,7 +26,7 @@ void kth_ancestor(int u,int k){
 			break;
 		}
 	}
-	cout << u << '\n';
+	return u;
 }
 
 int main(){

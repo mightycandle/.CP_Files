@@ -1,28 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 int n;
-vector<bool> vis;
-vector<int> path;
 vector<vector<int>> adj;
 
-void dfs(int u){
-	vis[u]=1;
-	for(auto v:adj[u]){
-		if(!vis[v]){
-			dfs(v);
+vector<int> toposort(){
+	vector<bool> vis(n+1);
+	vector<int> path;
+	auto dfs=[&](int u,auto&& dfs)->void{
+		vis[u]=1;
+		for(auto v:adj[u]){
+			if(vis[v]==0){
+				dfs(v,dfs);
+			}
 		}
-	}
-	path.push_back(u);
-}
-void toposort(){
-	vis.assign(n+1,0);
-	path.clear();
-	for(int i=1;i<=n;i++){
-		if(!vis[i]){
-			dfs(i);
-		}
+		path.push_back(u);
+	};
+	for(int i=1;i<=n and vis[i]==0;i++){
+		dfs(i,dfs);
 	}
 	reverse(path.begin(),path.end());
+	return path;
 }
 
 int main(){
