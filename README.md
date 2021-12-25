@@ -5,7 +5,7 @@
 	- Knapsack (0-1) with dp[n][w+1]
 	- Longest Increasing Subsequence
 	- Merge overalapping intervals
-	- MEX (Minimum Excluded Value) of a vector
+	- MEX (Minimum EXcluded value) of a vector
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
 	- Sliding window minimum of window size k
@@ -23,6 +23,7 @@
 	- Disjoin set union for 2D nodes
 	- Graph: class functions
 	- Kruskal algorithm for Minimum Spanning Tree (MST)
+	- Swap two nodes: editing edges and adjacency list
 	- Topological sorting
 * Number Theory:
 	- Factorial with nCr modulo p queries
@@ -65,4 +66,5 @@
 	- Euler tour of a tree
 	- K-th ancestor of a node using Binary Lifting
 	- Lowest Common Ancestor (LCA)
+	- Make a directed tree from undirected input using distance from root
 	- Subtree sizes using DFS
