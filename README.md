@@ -66,5 +66,5 @@
 	- Euler tour of a tree
 	- K-th ancestor of a node using Binary Lifting
 	- Lowest Common Ancestor (LCA)
-	- Make a directed tree from undirected input using distance from root
+	- Make a directed tree using distance from root
 	- Subtree sizes using DFS
