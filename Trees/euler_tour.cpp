@@ -15,7 +15,7 @@ vector<int> euler_tour(){
 		euler.push_back(u);
 		for(auto v:adj[u]){
 			if(v!=par){
-				dfs(v,u);
+				dfs(v,u,dfs);
 				euler.push_back(u);
 			}
 		}
