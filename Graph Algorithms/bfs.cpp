@@ -21,6 +21,7 @@ vector<int> bfs(int s=1){
 			}
 		}
 	}
+	// dist[0]=0;
 	return dist;
 }
 
