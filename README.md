@@ -28,6 +28,7 @@
 * Number Theory:
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
+	- Factorization of a number
 	- isPrime: individual primality check in O(sqrt N)
 	- Maximum exponent of a divisor m in a number n
 	- Minimum prime divisor of a number n
