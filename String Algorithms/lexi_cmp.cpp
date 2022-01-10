@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 // returns 1 if first is lesser (fless)
+string alphabets="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+string vowels="AEIOU";
 
 bool cmp(string s,string t){
 	int n=s.size();
