@@ -17,8 +17,8 @@ int get_diameter(){
 	};
 	dfs(1,0,dfs);
 	int root=max_element(dist.begin(),dist.end())-dist.begin();
-	dist.assign(n,0);
-	vis.assign(n,0);
+	dist.assign(n+1,0);
+	vis.assign(n+1,0);
 	dfs(root,0,dfs);
 	return *max_element(dist.begin(),dist.end());
 }
