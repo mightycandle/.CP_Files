@@ -18,8 +18,8 @@ void factfill(int n=1e6+6){
         fact[i]=(fact[i-1]*i)%mod;
     }
 }
+#define nPr(n,r) ((fact[n]*Finv[r])%mod)
 #define nCr(n,r) ((fact[n]*Finv[r])%mod*Finv[n-r])%mod
-
 int main(){
 
 }
