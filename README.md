@@ -21,6 +21,7 @@
 	- Dijkstra Algorithm: shortest paths
 	- Disjoin set union implementation
 	- Disjoin set union for 2D nodes
+	- Edge numbering for input edges in a graph
 	- Graph: class functions
 	- Kruskal algorithm for Minimum Spanning Tree (MST)
 	- Swap two nodes: editing edges and adjacency list
