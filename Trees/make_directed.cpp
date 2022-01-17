@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// pre-req: distances array from root
 // dist is the distance array from bfs()
 
 int n;
