@@ -2,6 +2,7 @@
 * Data Structures:
 	- Bitset approach: array partition with minimum sum difference
 	- Compress array values to fit in N
+	- Increasing subarrays' lengths
 	- Knapsack (0-1) with dp[n][w+1]
 	- Longest Increasing Subsequence
 	- Merge overalapping intervals
