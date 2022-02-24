@@ -4,15 +4,17 @@ using namespace std;
 
 vector<int> factorization(int n){
 	set<int> s;
-	for(int i=2;i*i<=n;i++){
+	for(int i=1;i*i<=n;i++){
 		if(n%i==0){
 			s.insert(i);
-			s.insert(n/i);
+			if(i!=(n/i)){
+				s.insert(n/i);
+			}
 		}
 	}
-	vi a;
-	revit(s){
-		a.pb(*it);
+	vector<int> a;
+	for(auto it=s.begin();it!=s.end();it++){
+		a.push_back(*it);
 	}
 	return a;
 }
