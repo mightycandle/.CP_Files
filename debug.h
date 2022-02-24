@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 #define tcT  template<class T>
 #define tcTU template<class T,class U>
 #define tcTA template<class T,class ... Args>
-tcT using V = vector<T>;
-tcT using VV = vector<vector<T>>;
+
+tcT using  V  = vector<T>;
+tcT using  VV = vector<vector<T>>;
 tcT using rpi = priority_queue<T,vector<T>,greater<T>>;
 #pragma GCC diagnostic ignored "-Wreturn-type"
 
