@@ -35,6 +35,9 @@ vector<int> connected_components(){
 			union_set(u,v);
 		}
 	}
+	for(int i=1;i<=n;i++){
+		parent[i]=find_set(parent[i],find_set);
+	}
 	return parent;
 }
 
