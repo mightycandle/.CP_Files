@@ -13,6 +13,9 @@ vector<int> dijkstra(int s){
 		auto p=pq.top();
 		pq.pop();
 		for(auto v:adj[p.second]){
+			// if the graph is unweighted:
+			//  v.first  --> v
+			//  v.second --> 1
 			if(dist[v.first]>dist[p.second]+v.second){
 				dist[v.first]=dist[p.second]+v.second;
 				pq.push({0-dist[v.first],v.first});
