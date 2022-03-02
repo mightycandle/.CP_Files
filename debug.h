@@ -58,6 +58,13 @@ tcT void dbg(const char* id,set<T> s){
 	}
 	cerr << '\n';
 }
+tcT void dbg(const char* id,multiset<T> s){
+	cerr << id << ": ";
+	for(auto it=s.begin();it!=s.end();it++){
+		cerr << *it << ' ';
+	}
+	cerr << '\n';
+}
 tcT void dbg(const char* id,queue<T> q){
 	cerr << id << ": ";
 	while(not q.empty()){
