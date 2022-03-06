@@ -2,77 +2,72 @@
 using namespace std;
 // dynamic range minimum queries
 
-int n,res;
-vector<int> a;
-vector<int> t;
-void merge(int i){
-	t[i]=min(t[i<<1],t[i<<1|1]);
-}
-void build(){
-	while(n&(n-1)){
-		++n;
-		a.push_back(0);
+class Segtree{
+	int n;
+	vector<int> a;
+	vector<int> t;
+	int reset=INT_MAX;
+public:
+	Segtree(vector<int> _a){
+		a=_a;build();
 	}
-	t.assign(n<<1,0);
-	for(int i=0;i<n;i++){
-		t[i+n]=a[i];
+	void merge(int i){
+		t[i]=t[i<<1]+t[i<<1|1];
 	}
-	for(int i=n-1;i>=1;i--){
-		merge(i);
-	}
-}
-void update(int v,int tl,int tr,int idx,int val){
-	if(tr<idx || idx<tl){
-		return;
-	}
-	if(tl==tr && tl==idx){
-		t[v]=val;
-		return;
-	}
-	int tm=(tl+tr)>>1;
-	update(v<<1,tl,tm,idx,val);
-	update(v<<1|1,tm+1,tr,idx,val);
-	merge(v);
-}
-void query(int v,int tl,int tr,int l,int r){
-	if(tr<l || r<tl){
-		return;
-	}
-	if(l<=tl && tr<=r){
-		res=min(res,t[v]);
-		return;
-	}
-	int tm=(tl+tr)>>1;
-	query(v<<1,tl,tm,l,r);
-	query(v<<1|1,tm+1,tr,l,r);
-}
-void solve(){
-	int nq;
-	cin >> n >> nq;
-	a.resize(n,0);
-	for(int i=0;i<n;i++){
-		cin >> a[i];
-	}
-	vector<vector<int>> qu;
-	qu.assign(nq,vector<int>(3));
-	for(int i=0;i<nq;i++){
-		for(int j=0;j<3;j++){
-			cin >> qu[i][j];
+	void build(){
+		n=a.size();
+		while(n&(n-1)){
+			a.push_back(0);n++;
+		}
+		t.assign(n<<1,0);
+		for(int i=n;i<(n<<1);i++){
+			t[i]=a[i-n];
+		}
+		for(int i=n-1;i>0;i--){
+			merge(i);
 		}
 	}
-	build();
-	for(auto q:qu){
-		if(q[0]==1){
-			update(1,0,n-1,q[1]-1,q[2]);
-		}
-		else{
-			res=INT_MAX;
-			query(1,0,n-1,q[1]-1,q[2]-1);
-			cout << res << "\n";
-		}
+	void update(int pos,int val){
+		auto _merge=[&](int i)->void{
+			merge(i);
+		};
+		auto u=[&](int v,int l,int r,int i,int k,auto&& u)->void{
+			if(i<l or i>r){
+				return;
+			}
+			if(i==l and i==r){
+				t[v]=k;
+				return;
+			}
+			int m=(l+r)>>1;
+			u(v<<1,l,m,i,k,u);
+			u(v<<1|1,m+1,r,i,k,u);
+			_merge(v);
+		};
+		u(1,0,n-1,pos,val,u);
 	}
-}
+	int query(int l,int r){
+		int ans=reset;
+		auto _merge=[&](int i)->void{
+			merge(i);
+		};
+		auto q=[&](int v,int tl,int tr,int l,int r,auto&& q)->void{
+			if(r<tl or tr<l){
+				return;
+			}
+			if(l<=tl and tr<=r){
+				ans=min(ans,t[v]);
+				return;
+			}
+			int tm=(tl+tr)>>1;
+			q(v<<1,tl,tm,l,r,q);
+			q(v<<1|1,tm+1,tr,l,r,q);
+		};
+		q(1,0,n-1,l,r,q);
+		return ans;
+	}
+};
 
-int main(){
-	solve();
+int32_t main(){
+	
 }

@@ -5,60 +5,67 @@ class Segtree{
 	int n;
 	vector<int> a;
 	vector<int> t;
-	int reset;
-	int answer;
+	int reset=0;
 public:
-	Segtree(int n,vector<int> a){
-		this->n=n;
-		this->a=a;
+	Segtree(vector<int> _a){
+		a=_a;build();
 	}
-	int merge(int i,int type=0){
-		if(type==0){
-			return t[i]; //fill operation for tree
-		}
-		return t[i];//replace operation for result
+	void merge(int i){
+		// condition for merge
 	}
 	void build(){
+		n=a.size();
 		while(n&(n-1)){
-			n++;
+			a.push_back(0);n++;
 		}
-		a.resize(n);
 		t.assign(n<<1,0);
-		for(int i=0;i<n;i++){
-			t[i+n]=a[i];
+		for(int i=n;i<(n<<1);i++){
+			t[i]=a[i-n];
 		}
-		for(int i=n-1;i>=1;i--){
-			int tmp=merge(i);
+		for(int i=n-1;i>0;i--){
+			merge(i);
 		}
 	}
-	void update(int v,int tl,int tr,int pos,int val){
-		if(pos<tl || pos>tr){
-			return;
-		}
-		if(pos==tl && tl==tr){
-			t[v]=val;
-			return;
-		}
-		int tm=(tl+tr)>>1;
-		update(v<<1,tl,tm,pos,val);
-		update(v<<1|1,tm+1,tr,pos,val);
-		merge(v);
+	void update(int pos,int val){
+		auto _merge=[&](int i)->void{
+			merge(i);
+		};
+		auto u=[&](int v,int l,int r,int i,int k,auto&& u)->void{
+			if(i<l or i>r){
+				return;
+			}
+			else if(i==l and i==r){
+				t[v]=k;
+			}
+			else{
+				int m=(l+r)>>1;
+				u(v<<1,l,m,i,k,u);
+				u(v<<1|1,m+1,r,i,k,u);
+				_merge(v);
+			}
+		};
+		u(1,0,n-1,pos,val,u);
 	}
-	void query(int v,int tl,int tr,int l,int r){
-		if(r<tl || l>tr){
-			return;
-		}
-		if(l<=tl && r>=tr){
-			merge(answer,t[v]);
-		}
-		int tm=(tl+tr)>>1;
-		query(v<<1,tl,tm,l,r);
-		query(v<<1|1,tm+1,tr,l,r);
-	}
-	int get_res(){
-		int tmp=answer;
-		answer=reset;
-		return tmp;
+	int query(int l,int r){
+		int ans=reset;
+		auto _merge=[&](int i)->void{
+			merge(i);
+		};
+		auto q=[&](int v,int tl,int tr,int l,int r,auto&& q)->void{
+			if(r<tl or tr<l){
+				return;
+			}
+			else if(l<=tl and tr<=r){
+				// merge ans with t[v]
+			}
+			else{
+				int tm=(tl+tr)>>1;
+				q(v<<1,tl,tm,l,r,q);
+				q(v<<1|1,tm+1,tr,l,r,q);
+			}
+		};
+		q(1,0,n-1,l,r,q);
+		return ans;
 	}
 };
 
