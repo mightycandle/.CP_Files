@@ -8,6 +8,8 @@ void dfs(int u){
 	vis[u]=1;
 	for(auto v:adj[u]){
 		if(not vis[v]){
+			// parent[v]=u;
+			// dist[v]=dist[u]+1;
 			dfs(v);
 		}
 	}
@@ -18,6 +20,8 @@ int main(){
 		vis[u]=1;
 		for(auto v:adj[u]){
 			if(not vis[v]){
+				// parent[v]=u;
+				// dist[v]=dist[u]+1;
 				dfs(v,dfs);
 			}
 		}

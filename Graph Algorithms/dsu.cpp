@@ -14,6 +14,11 @@ int find_set(int u){
 	}
 	return parent[u]=find_set(parent[u]);
 }
+void refresh(){
+	for(int i=1;i<parent.size();i++){
+		parent[i]=find_set(parent[i]);
+	}
+}
 void union_set(int u,int v){
 	u=find_set(u),v=find_set(v);
 	if(u!=v){
