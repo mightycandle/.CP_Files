@@ -4,6 +4,7 @@ using namespace std;
 
 int n;
 vector<vector<int>> adj;
+
 vector<int> edge_numbering(vector<vector<int>> edges){
 	int m=edges.size();
 	auto euler_tour=[&]()->vector<int>{
@@ -27,25 +28,25 @@ vector<int> edge_numbering(vector<vector<int>> edges){
 	};
 	vector<int> euler=euler_tour();
 	map<vector<int>,int> convert;
-	int mapper=1;
-	rep(i,1,euler.size()-1){
+	int cnt=1;
+	for(int i=1;i<euler.size()-1;i++){
 		vector<int> now={euler[i-1],euler[i]};
 		vector<int> nxt={euler[i],euler[i+1]};
 		sort(now.begin(),now.end());
 		sort(nxt.begin(),nxt.end());
 		if(convert[now]==0){
-			convert[now]=mapper++;
+			convert[now]=cnt++;
 		}
 		if(now!=nxt and convert[nxt]==0){
-			convert[nxt]=mapper++;
+			convert[nxt]=cnt++;
 		}
 	}
-	vector<int> edge_number;
+	vector<int> edge_numbers;
 	for(auto e:edges){
 		sort(e.begin(),e.end());
-		edge_number.push_back(convert[e]);
+		edge_numbers.push_back(convert[e]);
 	}
-	return edge_number;
+	return edge_numbers;
 }
 
 vector<int> euler_tour(){

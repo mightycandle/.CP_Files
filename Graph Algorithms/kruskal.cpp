@@ -1,17 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n;
 
-class Edge{ public:
-	int x,y,wt;
-	bool operator < (Edge const& e){
-		return wt < e.wt;
-	}
-	void read(){
-		cin >> x >> y >> wt;
-	}
-};
+int n;
+vector<vector<int>> edges;
 vector<int> parent,ranks;
+
 void make_set(int u){
 	parent[u]=u;
 }
@@ -33,21 +26,25 @@ void union_set(int u,int v){
 		}
 	}
 }
-void kruskal(vector<Edge> edges){
+void kruskal(vector<vector<int>> edges){
 	parent.resize(n+1);
 	ranks.resize(n+1);
 	for(int i=1;i<=n;i++){
 		make_set(i);
 	}
 	int cost=0;
-	vector<Edge> res;
-	sort(edges.begin(),edges.end());
+	vector<vector<int>> res;
+	auto cmp=[&](vector<int> a,vector<int> b)->bool{
+		return a[2]<b[2];
+	};
+	sort(edges.begin(),edges.end(),cmp);
 	for(auto e:edges){
-		if(find_set(e.x)!=find_set(e.y)){
+		int u=e[0],v=e[1],w=e[2];
+		if(find_set(u)!=find_set(v)){
 			res.push_back(e);
-			cost+=e.wt;
-			union_set(e.x,e.y);
-		}
+			cost+=w;
+			union_set(u,v);
+		}	
 	}
 }
 
