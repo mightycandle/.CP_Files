@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// window minimum of size k across the array
 
 vector<int> sliding_minimum(vector<int> a,int k){
 	int n=a.size();
