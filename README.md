@@ -9,7 +9,7 @@
 	- Segment Tree :- Lazy Propagation
 	- Segment Tree :- Range Miniumum Queries
 	- Segment Tree :- Range Sum queries
-	- Sliding window minimum of window size k
+	- Sliding window minimum - Deque
 * Graph Algorithms:
 	- Breadth First Search: distances
 	- Bipartite graph check
