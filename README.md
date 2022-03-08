@@ -5,7 +5,7 @@
 	- Increasing subarrays' lengths
 	- Knapsack (0-1) with dp[n][w+1]
 	- Longest Increasing Subsequence
-	- Merge overalapping intervals
+	- Merge overlapping intervals
 	- MEX (Minimum EXcluded value) of a vector
 	- Power set of a vector
 	- Room allocation: Optimal with numbering
