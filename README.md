@@ -1,17 +1,15 @@
 ## Topics
 * Data Structures:
 	- Bitset approach: array partition with minimum sum difference
-	- Compress array values to fit in N
-	- Increasing subarrays' lengths
-	- Knapsack (0-1) with dp[n][w+1]
-	- Longest Increasing Subsequence
-	- Merge overlapping intervals
-	- MEX (Minimum EXcluded value) of a vector
+	- Disjoin set union implementation
+	- Disjoin set union for 2D nodes
+	- Graph: class functions
 	- Power set of a vector
-	- Room allocation: Optimal with numbering
+	- Segment Tree :- Implementation
+	- Segment Tree :- Lazy Propagation
+	- Segment Tree :- Range Miniumum Queries
+	- Segment Tree :- Range Sum queries
 	- Sliding window minimum of window size k
-	- Three sum problem
-	- Unique vector and contiguous counts
 * Graph Algorithms:
 	- Breadth First Search: distances
 	- Bipartite graph check
@@ -20,13 +18,21 @@
 	- Cyclicity check and retrieve path in O(M)
 	- Depth First Search
 	- Dijkstra Algorithm: shortest paths
-	- Disjoin set union implementation
-	- Disjoin set union for 2D nodes
 	- Edge numbering for input edges in a graph
-	- Graph: class functions
 	- Kruskal algorithm for Minimum Spanning Tree (MST)
 	- Swap two nodes: editing edges and adjacency list
 	- Topological sorting
+* Miscellanoeus:
+	- Compress array values to fit in N
+	- Increasing subarrays' lengths
+	- Knapsack (0-1) with dp[n][w+1]
+	- Longest Increasing Subsequence
+	- Maximum subarray sum
+	- Merge overlapping intervals
+	- MEX (Minimum EXcluded value) of a vector
+	- Room allocation: Optimal with numbering
+	- Three sum problem
+	- Unique vector and contiguous counts
 * Number Theory:
 	- Factorial with nCr modulo p queries
 	- Factorial exp: exponent of a number in a factorial
@@ -40,14 +46,6 @@
 	- Prime factorization: with and without sieve
 	- Sieve of Eratosthenes preprocessing
 	- Square root of a number in O(log n) using binary search
-* Segment Trees:
-	- Dynamic range minimum queries
-	- Dynamic range sum queries
-	- Segment Tree implementation and queries
-	- Segment Tree: Lazy Propagation for range updates
-	- Static range minimum queries
-	- Static range sum queries
-	- Static range XOR queries
 * String Algorithms:
 	- Counting palindromic substrings of a string
 	- Edit distance of two strings
