@@ -1,3 +1,5 @@
+// user: _shanks_ ; sashank1711
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -96,4 +98,11 @@ tcT void dbg(const char* id,rpi<T> pq){
 		pq.pop();
 	}
 	cerr << '\n';
+}
+tcTU void dbg(const char* id,priority_queue<pair<T,U>> pq){
+	cerr << id << ": ";
+	while(not pq.empty()){
+		cerr << "{" << pq.top().first << ", " << pq.top().second << "}\n";
+		pq.pop();
+	}
 }
