@@ -15,18 +15,17 @@ string subtract(string s,string t){
 	string ans="";
 	int carry=0;
 	for(int i=0;i<n;i++){
-		int top=(s[i]-'0')-carry;
-		int bot=t[i]-'0';
-		carry=(top<bot)?1:0;
-		ans+=char('0'+(top-bot+carry*10));
+		int above=(s[i]-'0')-carry;
+		int below=t[i]-'0';
+		carry=(above<below)?1:0;
+		ans+=char('0'+(above-below+10*carry));
 	}
 	while(ans.back()=='0' and !ans.empty()){
 		ans.pop_back();
 	}
-	if(ans.empty()){
-		ans="0";
+	if(not ans.empty()){
+		reverse(ans.begin(),ans.end());
 	}
-	reverse(ans.begin(),ans.end());
 	return ans;
 }
 
