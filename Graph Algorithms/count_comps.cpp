@@ -15,7 +15,10 @@ int count_connected_comps(){
 			}
 		}
 	};
-	for(int i=1;i<=n and vis[i]==0;i++){
+	for(int i=1;i<=n;i++){
+		if(vis[i]==1){
+			continue;
+		}
 		cnt++;
 		dfs(i,dfs);
 	}

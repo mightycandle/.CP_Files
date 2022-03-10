@@ -15,7 +15,10 @@ vector<int> toposort(){
 		}
 		path.push_back(u);
 	};
-	for(int i=1;i<=n and vis[i]==0;i++){
+	for(int i=1;i<=n;i++){
+		if(vis[i]==1){
+			continue;
+		}
 		dfs(i,dfs);
 	}
 	reverse(path.begin(),path.end());
