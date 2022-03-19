@@ -106,3 +106,32 @@ tcTU void dbg(const char* id,priority_queue<pair<T,U>> pq){
 		pq.pop();
 	}
 }
+
+// just so you know
+void setBit(int& n,int x){
+	n|=(1<<x);
+}
+void unsetBit(int& n,int x){
+	n&=~(1<<x);
+}
+void toggleBit(int& n,int x){
+	n^=(1<<x);
+}
+bool getBit(int n,int x){
+	return n&(1<<x);
+}
+void leftShift(int& n,int x){
+	n<<=(1<<x);
+}
+void rightShift(int& n,int x){
+	n>>=(1<<x);
+}
+int oneBits(int n){
+	return __builtin_popcountll(n);
+}
+int lsb(int n){
+	return __builtin_ctzll(n);
+}
+int msb(int n){
+	return log2(n);
+}
