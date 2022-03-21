@@ -5,9 +5,6 @@ int n;
 vector<vector<int>> edges;
 vector<int> parent,ranks;
 
-void make_set(int u){
-	parent[u]=u;
-}
 int find_set(int u){
 	if(u==parent[u]){
 		return u;
@@ -26,11 +23,11 @@ void union_set(int u,int v){
 		}
 	}
 }
-void kruskal(vector<vector<int>> edges){
+int kruskal(){
 	parent.resize(n+1);
 	ranks.resize(n+1);
 	for(int i=1;i<=n;i++){
-		make_set(i);
+		parent[i]=i;
 	}
 	int cost=0;
 	vector<vector<int>> res;
@@ -46,6 +43,7 @@ void kruskal(vector<vector<int>> edges){
 			union_set(u,v);
 		}	
 	}
+	return cost;
 }
 
 
