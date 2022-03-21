@@ -60,6 +60,13 @@ tcT void dbg(const char* id,set<T> s){
 	}
 	cerr << '\n';
 }
+tcTU void dbg(const char* id,set<pair<T,U>> s){
+	cerr << id << ": \n";
+	for(auto it=s.begin();it!=s.end();it++){
+		cerr << "{" << (*it).first << ", " << (*it).second << "}\n";
+	}
+}
+
 tcT void dbg(const char* id,multiset<T> s){
 	cerr << id << ": ";
 	for(auto it=s.begin();it!=s.end();it++){
