@@ -7,8 +7,12 @@ class Segtree{
 	vector<int> t;
 	int reset=0;
 public:
-	Segtree(vector<int> _a){
-		a=_a;build();
+	Segtree(vector<int> _a={0}){
+		a=_a;
+		if(a.empty()){
+			a={0};
+		}
+		build();
 	}
 	void merge(int i){
 		// condition for merge
