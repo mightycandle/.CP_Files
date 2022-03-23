@@ -1,4 +1,3 @@
-// user: _shanks_ ; sashank1711
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -6,14 +5,14 @@ using namespace std;
 #define tcT  template<class T>
 #define tcTU template<class T,class U>
 #define tcTA template<class T,class ... Args>
+#define _(...) dbg(#__VA_ARGS__, __VA_ARGS__)
 
 tcT using  V  = vector<T>;
 tcT using  VV = vector<vector<T>>;
 tcT using rpi = priority_queue<T,vector<T>,greater<T>>;
+
+
 #pragma GCC diagnostic ignored "-Wreturn-type"
-
-
-#define _(...) dbg(#__VA_ARGS__, __VA_ARGS__)
 
 
 tcT void dbg(const char* id,T&& a){
