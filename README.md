@@ -11,6 +11,7 @@
 	- Segment Tree :- Range Sum queries
 	- Sliding window minimum - Deque
 * Graph Algorithms:
+	- Bellman-Ford algorithm
 	- Breadth First Search: distances
 	- Bipartite graph check
 	- Connected components: finding roots
