@@ -1,6 +1,5 @@
 ## Topics
 * Data Structures:
-	- Bitset approach: array partition with minimum sum difference
 	- Disjoin set union implementation
 	- Disjoin set union for 2D nodes
 	- Graph: class functions
@@ -24,14 +23,15 @@
 	- Swap two nodes: editing edges and adjacency list
 	- Topological sorting
 * Miscellanoeus:
-	- Compress array values to fit in N
-	- Increasing subarrays' lengths
-	- Knapsack (0-1) with dp[n][w+1]
+	- Bitset: partition array for minimum sum difference
+	- Compress the array elements to fit in [1,N]
+	- Increasing subarray lengths
+	- Knapsack (0-1) using dp[n][w+1] for states
 	- Longest Increasing Subsequence
 	- Maximum subarray sum
 	- Merge overlapping intervals
 	- MEX (Minimum EXcluded value) of a vector
-	- Room allocation: Optimal with numbering
+	- Optimal Room allocation with numbering
 	- Three sum problem
 	- Unique vector and contiguous counts
 * Number Theory:
