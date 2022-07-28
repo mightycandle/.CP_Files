@@ -18,7 +18,7 @@ vector<int> factors(int n){
 
 vector<int> get_factors(int n){
 	vector<int> factors;
-	while((n&1)==0){
+	while(n%2==0){
 		factors.push_back(2);
 		n>>=1;
 	}
