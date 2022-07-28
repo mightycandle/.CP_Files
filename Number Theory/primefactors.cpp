@@ -4,6 +4,9 @@ using namespace std;
 vector<int> primes;
 
 vector<int> factors(int n){
+	if(n==1){
+		return {};
+	}
 	vector<int> factors;
 	while(n>1){
 		factors.push_back(primes[n]);
