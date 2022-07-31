@@ -3,6 +3,7 @@
 	- Disjoin set union implementation
 	- Disjoin set union for 2D nodes
 	- Graph: class functions
+	- Heavy Light Decomposition
 	- Power set of a vector
 	- Segment Tree :- Implementation
 	- Segment Tree :- Lazy Propagation

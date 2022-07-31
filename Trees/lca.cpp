@@ -2,15 +2,19 @@
 using namespace std;
 // lowest common ancestor using binary lifting and timer arrays
 
-vector<vector<int>> adj;
 
 class LCA{
 	int n,l,timer=0;
 	vector<int> tin,tout;
 	vector<vector<int>> dp;
+	vector<vector<int>> adj;
 public:
-	LCA(int n){
+	LCA(int n,vector<vector<int>> adj){
 		this->n=n;
+		this->adj=adj;
+		lca_init();
+	}
+	void lca_init(){
 		l=ceil(log2(n+1));
 		tin.assign(n+1,0);
 		tout.assign(n+1,0);
