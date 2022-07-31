@@ -59,6 +59,7 @@ class HLD{ public:
 	vector<vector<int>> adj,chains;
 	vector<int> parent,heavyChild,chainHead;
 	vector<int> subs,index,linear;
+	int baseValue=0;
 	LCA L;
 	HLD(vector<int> _a,vector<vector<int>> _adj){
 		n=_adj.size()-1;
@@ -67,7 +68,7 @@ class HLD{ public:
 		}
 		a=_a;
 		adj=_adj;
-		a.resize(n);
+		a.resize(n,baseValue);
 		adj.resize(n+1);
 		L=LCA(n,adj);
 		MakeChain();
@@ -197,13 +198,11 @@ class HLD{ public:
 			return t[v];
 		}
 		int tm=(tl+tr)/2;
-		int left=segQuery(v<<1,tl,tm,l,r);
-		int right=segQuery(v<<1|1,tm+1,tr,l,r);
-		return left+right;
+		return segQuery(v<<1,tl,tm,l,r)+segQuery(v<<1|1,tm+1,tr,l,r);
 	}
 	int query(int u,int v){
 		int ans=0;
-		auto subQuery=[&](int x,int y)->int{
+		auto subquery=[&](int x,int y)->int{
 			int z=L.lca(x,y);
 			if(u==v){
 				return a[index[u]];
@@ -239,6 +238,6 @@ class HLD{ public:
 			}
 			return ans;
 		};
-		return qu(x,z)+qu(z,y)-a[index[z]];
+		return subquery(x,z)+subquery(z,y)-a[index[z]];
 	}
 };
