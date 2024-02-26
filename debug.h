@@ -3,34 +3,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define tcT  template<class T>
-#define tcTU template<class T,class U>
-#define tcTA template<class T,class ... Args>
 #define _(...) dbg(#__VA_ARGS__, __VA_ARGS__)
-
-tcT using  V  = vector<T>;
-tcT using  VV = vector<vector<T>>;
-tcT using rpi = priority_queue<T,vector<T>,greater<T>>;
-
 
 #pragma GCC diagnostic ignored "-Wreturn-type"
 
-
-tcT void dbg(const char* id,T&& a){
+template<class T> void dbg(const char* id,T&& a){
 	cerr << id << " is " << a << '\n';
 }
-tcTA void dbg(const char* id,T&& a,Args&&... args){
+template<class T,class ... Args> void dbg(const char* id,T&& a,Args&&... args){
 	const char* comma=strchr(id+1,',');
 	cerr.write(id,comma-id) << " is " << a <<" | ";
 	dbg(comma+1,args...);
 }
-tcT void dbg(const char* id,vector<T> a){
+template<class T> void dbg(const char* id,vector<T> a){
 	cerr << id << ": ";
 	for(auto it=a.begin();it!=a.end();it++){
 		cerr << *it << " \n"[it+1==a.end()];
 	}
 }
-tcT void dbg(const char* id,VV<T> v){
+template<class T> void dbg(const char* id,vector<vector<T>> v){
 	cerr << id << ": \n";
 	for(auto y:v){
 		for(auto it=y.begin();it!=y.end();it++){
@@ -38,43 +29,46 @@ tcT void dbg(const char* id,VV<T> v){
 		}
 	}
 }
-tcTU void dbg(const char* id,vector<pair<T,U>> v){
+template<class T,class U> void dbg(const char* id,vector<pair<T,U>> v){
 	cerr << id << ":\n";
 	for(auto p:v){
 		cerr << " {" << p.first << ", " << p.second << "}\n";
 	}
 }
-tcTU void dbg(const char* id,pair<T,U> p){
+
+template<class T,class U> void dbg(const char* id,pair<T,U> p){
 	cerr << id << ": {" << p.first << ", " << p.second << "}\n";
 }
-tcTU void dbg(const char* id,map<T,U> mp){
+
+template<class T,class U> void dbg(const char* id,map<T,U> mp){
 	cerr << id << ":\n";
 	for(auto p:mp){
 		cerr << " {" << p.first << " -> " << p.second << "}\n";
 	}
 }
-tcT void dbg(const char* id,set<T> s){
+
+template<class T> void dbg(const char* id,set<T> s){
 	cerr << id << ": ";
 	for(auto it=s.begin();it!=s.end();it++){
 		cerr << *it << ' ';
 	}
 	cerr << '\n';
 }
-tcTU void dbg(const char* id,set<pair<T,U>> s){
+template<class T,class U> void dbg(const char* id,set<pair<T,U>> s){
 	cerr << id << ": \n";
 	for(auto it=s.begin();it!=s.end();it++){
 		cerr << "{" << (*it).first << ", " << (*it).second << "}\n";
 	}
 }
 
-tcT void dbg(const char* id,multiset<T> s){
+template<class T> void dbg(const char* id,multiset<T> s){
 	cerr << id << ": ";
 	for(auto it=s.begin();it!=s.end();it++){
 		cerr << *it << ' ';
 	}
 	cerr << '\n';
 }
-tcT void dbg(const char* id,queue<T> q){
+template<class T> void dbg(const char* id,queue<T> q){
 	cerr << id << ": ";
 	while(not q.empty()){
 		cerr << q.front() << ' ';
@@ -82,7 +76,7 @@ tcT void dbg(const char* id,queue<T> q){
 	}
 	cerr << '\n';
 }
-tcT void dbg(const char* id,stack<T> s){
+template<class T> void dbg(const char* id,stack<T> s){
 	cerr << id << ": ";
 	while(not s.empty()){
 		cerr << s.top() << ' ';
@@ -90,7 +84,7 @@ tcT void dbg(const char* id,stack<T> s){
 	}
 	cerr << '\n';
 }
-tcT void dbg(const char* id,priority_queue<T> pq){
+template<class T> void dbg(const char* id,priority_queue<T> pq){
 	cerr << id << ": ";
 	while(not pq.empty()){
 		cerr << pq.top() << ' ';
@@ -98,7 +92,7 @@ tcT void dbg(const char* id,priority_queue<T> pq){
 	}
 	cerr << '\n';
 }
-tcT void dbg(const char* id,rpi<T> pq){
+template<class T> void dbg(const char* id,priority_queue<T,vector<T>,greater<T>> pq){
 	cerr << id << ": ";
 	while(not pq.empty()){
 		cerr << pq.top() << ' ';
@@ -106,7 +100,7 @@ tcT void dbg(const char* id,rpi<T> pq){
 	}
 	cerr << '\n';
 }
-tcTU void dbg(const char* id,priority_queue<pair<T,U>> pq){
+template<class T,class U> void dbg(const char* id,priority_queue<pair<T,U>> pq){
 	cerr << id << ": ";
 	while(not pq.empty()){
 		cerr << "{" << pq.top().first << ", " << pq.top().second << "}\n";
@@ -115,6 +109,7 @@ tcTU void dbg(const char* id,priority_queue<pair<T,U>> pq){
 }
 
 // just so you know
+/*
 void setBit(int& n,int x){
 	n|=(1<<x);
 }
@@ -142,3 +137,4 @@ int lsb(int n){
 int msb(int n){
 	return log2(n);
 }
+*/
