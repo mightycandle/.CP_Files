@@ -1,0 +1,1814 @@
+snippet cpp "cpp driver code" i
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+// {@
+#ifdef local
+	#include "debug.h"
+#else
+	#pragma GCC optimize("O3,Ofast,unroll-loops")
+	#define _(...)
+#endif	
+typedef vector<int>  vi;typedef vector<string> vs;typedef vector<vector<int>> vvi;typedef pair<int,int> pii; 
+typedef vector<bool> vb;typedef vector<vector<char>> vvc;template<class T> using pri=priority_queue<T>;
+typedef vector<char> vc;template<class T> using rpi=priority_queue<T,vector<T>,greater<T>>;typedef map<int,int> mii;
+using ll = long long;
+
+#define rep(i,a,b)	for(int i=a; i<(int)b; i++)
+#define rev(i,a,b)	for(int i=a; i>(int)b; i--)
+#define revit(a)	for(auto it=(a).begin(); it!=(a).end(); it++)
+#define each(x,a)	for(auto &x:a)
+#define make(a,b,c)	(a).assign(b,c)
+#define all(a)		(a).begin(), (a).end()
+#define rall(a)		reverse((a).begin(), (a).end())
+#define uniq(a)		(a).erase(unique((a).begin(),(a).end()),(a).end())
+#define S(a)		sort((a).begin(), (a).end())
+#define R(a)		sort((a).rbegin(), (a).rend())
+#define len(a)		(int)(a).size()
+#define read(T,...)	T __VA_ARGS__;rd(__VA_ARGS__)
+
+template<class T> void rd(T& a){cin>>a;}template<class T> void rd(vector<T>& a){each(x,a)rd(x);}
+template<class T> void rd(vector<vector<T>>& a){each(x,a)rd(x);}template<class T,class ...A> void rd(T& x, A&...a){cin>>x; rd(a...);}
+template<class T> void print(T a){cout<<a<<'\n';} template<class T> void print(vector<T>a){int n=len(a);rep(i,0,n){cout<<a[i]<<" \n"[i==n-1];}}
+template<class T> void print(vector<vector<T>>a){each(x,a)print(x);}template<class T,class ...A> void print(T x,A...a){cout<<x<<' ';print(a...);}
+
+template<class T> T min(vector<T> a){return *min_element(all(a));}
+template<class T> T max(vector<T> a){return *max_element(all(a));}
+template<class T, class U> T min(T a, U b){if(a>b) a=b; return a;}
+template<class T, class U> T max(T a, U b){if(a<b) a=b; return a;}
+template<class T> T sum(vector<T>a){T x=0;each(y,a)x+=y;return x;}
+
+#define put(x)		{print(x);return;}
+#define pb  		push_back
+#define amin(a,b)	if(a>b)a=b;
+#define amax(a,b)	if(a<b)a=b;
+#define cts(a,b)	count(all(a),b)
+#define ceil(a,b)	((a+b-1)/b)
+
+const long double eps=1e-6, pi=2*acos(0.0), E=exp(1.0), INF=1e18;
+int N=2e5+5, mod=1e9+7, mod2=998244353; ll inf = (sizeof(int)==sizeof(ll)) ? LLONG_MAX : INT_MAX; ll ninf= (inf==INT_MAX) ? INT_MIN : LLONG_MIN;
+int nc2(int n){return (n*(n-1))/2;}int msb(int n){return log2(n);}int lsb(int n){return __builtin_ctzll(n);}
+int madd(int a,int b){a=(a+0ll+b)%mod;return (a<0)?a+mod:a;}int mmul(int a,int b){a=(a*1ll*b)%mod;return (a<0)?a+mod:a;} 
+int POW(int x,int y){int a=1;while(y>0){if(y&1)a=mmul(a,x);x=mmul(x,x);y/=2;}return a;}int msub(int a,int b){return madd(a,-b);}
+// @}
+
+void test_case(int _i = 1){
+	${2:}
+}
+
+void _init(){
+	N=200005, mod=1000000007; // 998244353;
+}
+int32_t main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);clock_t c=clock();
+	_init(); int T = 1; ${1:cin >> T;}
+	for(int i = 1; i <= T; i++) {
+		test_case(i);
+	}
+	cerr<<"\n time	"<<(clock()-c)/1e3<<"ms ";
+}/*
+⠀⠀⠀⠀⢀⡴⣫⠎⠙⣡⠞⣡⠖⢋⡥⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⡟⣿⡿⠁⠀⠙⢿⣿⣿⣿⣿⣿⠙⢿⣿⣿⣿⣿⣿⣶⣄⡀⠀⠀⠀⠀⠀⠈⠓⠁⠀⢉⠲⣍⠳⣄⠀⠀⠀⠀⠀
+⠀⠀⠀⢠⢮⣞⠕⣰⢫⠄⠈⠁⡴⠋⠰⠂⠀⠀⠀⠀⢀⣴⣿⣿⣿⡟⠀⣿⡃⠀⠀⠀⠈⣻⣿⣿⣿⣿⣇⣀⠻⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⢀⣀⡫⡕⢌⠣⡈⢣⡀⠀⠀⠀
+⠀⠀⢀⢾⣿⠏⡼⣵⠋⣠⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⠴⢺⡏⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⡇⠀⠉⠛⣿⣿⠹⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠈⠳⣝⢎⢮⢳⡙⢄⢱⣄⠀⠀
+⠀⠀⣞⣜⡏⣼⣽⠃⡼⢃⡴⠂⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⠋⠀⠘⠃⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⡇⠀⠀⠀⢘⣿⠷⣽⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠈⠈⠀⢀⠀⣈⢦⠽⡆⠀
+⠀⢼⢱⡍⠀⠃⠃⠸⢡⡟⠀⢠⡞⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⢇⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡇⣠⣤⣒⢍⣸⡀⠈⢿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⢀⢰⡘⣎⢧⠘⡎⣧⠹⡄
+⠀⢸⢠⠇⡞⢰⠀⡆⢠⠀⢀⠈⠤⠤⠶⠿⢟⣿⣿⣿⣿⣻⡿⠀⣈⠭⠶⣶⣤⣤⣀⠀⠀⠀⠀⠐⡶⠺⢫⡟⠁⣶⣶⡎⠙⢦⠘⣿⡏⣿⣿⣿⣿⣿⣧⡀⠀⠘⣆⢣⢸⠈⡆⢹⣹⡆⠇
+⠀⢸⢸⠀⡇⢿⢰⡇⣸⢀⡏⠀⡀⢀⡀⠀⣼⣿⣿⣿⣿⠻⣧⠞⠁⣾⣿⠆⠹⡄⠀⠙⡆⠀⠀⠀⠓⠊⡟⠀⠀⠙⠛⠁⠀⠈⡇⢿⢷⢿⣿⣿⣿⣿⣟⠛⠂⠀⠘⠘⠈⠀⠁⠈⠃⡇⡀
+⠀⢸⢸⡄⣇⢸⠸⡇⢻⠈⡇⢸⠇⠘⠀⢰⣿⣿⣿⣿⡏⠀⡇⠀⠀⠈⠁⠀⠀⡇⠀⢰⣣⠀⠀⠀⠀⠀⠸⣀⠀⠀⠀⠀⠀⢠⠃⠘⠈⢸⣿⣿⣿⣿⣿⡀⢀⡄⣶⠀⡆⠀⢰⠀⡇⡇⡇
+⠀⠸⡿⡇⡙⠘⠃⠃⠈⠀⣁⠈⡅⠀⣦⣿⣿⣿⣿⣿⣧⠀⢧⠀⠀⠀⠀⢀⠔⠀⠀⠸⡍⠀⠀⠀⠀⠀⠀⣌⡑⡖⠒⢲⠚⣁⠄⠀⠀⢸⣿⢏⣽⣿⣿⣧⢸⢡⠇⢸⠃⢀⡎⣰⢡⣧⠇
+⠀⠀⢹⣧⢹⡰⡄⣦⠀⣆⠸⡄⣹⣾⣿⣿⡿⣿⡿⣿⡟⠀⠀⠙⠒⠒⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠉⠉⠉⠏⠀⠀⠀⠀⣾⢣⡏⠸⣿⣿⣿⣧⣈⠀⠁⢀⠈⠀⣡⢫⠎⠀
+⠀⢦⡀⢫⢧⢣⡹⣜⢧⠘⢦⠹⣄⠳⡀⢳⢀⣿⣷⡝⣷⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠖⠒⠚⠋⠉⠉⠉⠉⠉⠐⠒⡆⠤⣄⣀⠀⠀⢸⡏⣸⣓⢧⣿⡇⡴⢃⣞⡞⢠⠞⡼⣱⣣⠏⠀⠀
+⠀⠔⠛⠲⣽⣷⡳⡝⠎⠓⠀⠀⠀⠀⣄⠀⣼⣿⣿⣽⡞⡆⠀⠀⡠⡔⠊⠉⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠇⠀⡿⢸⠀⠀⣼⠕⢡⠏⡼⠿⣿⡤⠋⠋⠴⠣⢾⠞⣱⠋⠀⠀⠀
+⠀⡀⠀⠀⠀⢙⣷⣄⡀⢠⡀⢢⡙⢄⠘⢮⡉⢩⡿⣿⣿⣻⡄⠀⣿⣵⡠⣴⣾⡿⠋⢁⡠⠤⠒⠒⠒⠤⢄⡀⠈⠻⣿⣿⣳⠇⠀⢰⡟⠊⡡⣾⡣⣦⠞⣡⠞⣠⢄⡴⣠⠞⠁⠀⠀⠀⠀
+⠀⢈⣆⣴⡾⠛⠉⠻⢽⡲⣝⢦⡙⢦⣙⠂⠁⠀⠀⣬⣿⣿⣻⡄⠘⢿⣶⣿⠋⣠⣞⣁⣀⡤⠤⠤⠤⠤⠤⠬⣑⣄⣈⡻⠋⠀⢠⣿⣶⣫⢄⡠⢎⡡⠞⣥⣾⠕⣫⠞⠁⠀⠀⠀⠀⠀⠀
+⠀⣽⣿⣿⣷⣄⠀⠀⠀⠙⢮⡓⠬⣓⠎⢁⠀⢀⡲⣬⡻⠭⣲⡽⣆⠀⠙⢷⡋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡼⠊⠀⠀⣠⠟⣯⠘⢚⣩⢴⣫⢞⡴⢉⡤⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠉⠢⣌⠓⢬⣙⡲⢭⣓⡯⠽⠁⢀⡼⣳⣦⡀⠉⠑⠒⠤⠤⠤⠤⠤⠴⠒⠒⠉⠁⠀⢀⣤⡞⣡⢿⣻⢅⠐⠺⠽⣚⡭⠖⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢿⣿⣿⣿⡻⣿⣿⣿⣦⡀⠀⠀⠈⠳⣄⠀⠉⠓⠪⠭⢍⣰⢷⣯⣗⣊⢹⣶⣤⣀⠀⠒⠒⠒⠒⠒⠚⠉⣀⣤⣾⡟⣇⡇⢨⣿⠮⣻⠯⠖⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠻⣿⣿⣿⣦⣍⡛⠻⢿⣦⡀⠀⠀⠀⠑⢤⡀⠀⠀⠀⠈⠙⠺⠯⠭⣼⠈⢻⣸⢿⢲⢢⢤⢤⢶⣶⣿⣿⣾⣿⠃⡼⡷⠒⠚⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⡈⠻⣿⣿⣿⣿⣷⣤⡹⣿⣦⣀⠀⠀⠀⠙⢦⡀⠀⠀⠀⠀⠀⠀⢸⠀⠀⢹⢼⢸⣸⢸⢸⢸⣿⡇⡟⡟⡣⠊⠀⣇          kaizoku-ou ni .. ore wa naru!*/
+endsnippet
+#		+-----------------+
+#		|
+#		|	declare
+#		|
+#		+-----------------+
+# if something's missing, it'll probably be in
+# ~/.vim/bundle/vim-snippets/snippets/cpp.snippets
+
+# snippet declare_vec2d "init vector2d" i
+# vector<vector<${1:int}>> ${2:big};
+# $2.assign(${3:n},vector<$1>(${4:}));
+# endsnippet
+
+snippet map "map " i
+map<${1:int},${2:int}> ${3}
+endsnippet
+#
+# snippet vi "v int" i
+# vector<int> ${1}
+# endsnippet
+#
+# snippet vv "vv" i
+# vector<vector<${1:int}>> ${2}
+# endsnippet
+#
+# snippet pair "pair" i
+# pair<${1:int},${2:int}>
+# endsnippet
+#
+# snippet pii "pii" i
+# pair<int,int>
+# endsnippet
+#
+# snippet vs "v str" i
+# vector<string> ${1}
+# endsnippet
+#
+# snippet pb "pb" i
+# push_back
+# endsnippet
+#
+snippet ret "return" i
+return
+endsnippet
+#
+# snippet declare_maxheap "initialize priority_queue" i
+# priority_queue<${1:int}> ${2:};
+# endsnippet
+#
+# snippet declare_minheap "initialize rev prique" i
+# priority_queue<${1:int},vector<$1>,greater<$1>> ${2:};
+# endsnippet
+
+# #		+-----------------+
+# #		|
+# #		|	word-fills
+# #		|
+# #		+-----------------+
+# snippet vb "vec bool" i
+# vector<bool> ${1}
+# endsnippet
+#
+# snippet ld "long double" i
+# long double
+# endsnippet
+#
+# snippet dbg "dbg line" i
+# cerr << "dbg: " << ${1:"line- "<<__LINE__} << "\n";
+# ${2}
+# endsnippet
+#
+# #		+-----------------+
+# #		|
+# #		|	Input & Read
+# #		|
+# #		+-----------------+
+# snippet read_n "init & read n" i
+# ${1:int} ${2:n}; cin >> $2;
+# ${3}
+# endsnippet
+#
+# snippet read_s "init & read s" i
+# string ${1:s}; cin >> $1;
+# ${2}
+# endsnippet
+#
+# snippet read_n_m "init & read n m" i
+# int ${1:n},${2:m}; cin >> $1 >> $2;
+# ${3}
+# endsnippet
+#
+# snippet read_n_m_k "init & read n m k" i
+# int ${1:n},${2:m},${3:k};
+# cin >> $1 >> $2 >> $3;
+# ${4}
+# endsnippet
+#
+# snippet read_n_s "init & read n s" i
+# int ${1:n}; string ${2:s};
+# cin >> $1 >> $2;
+# ${3}
+# endsnippet
+#
+# snippet read_s_t "init & read s t" i
+# string ${1:s},${2:t}; cin >> $1 >> $2;
+# ${3}
+# endsnippet
+#
+# snippet read_c "init & read c" i
+# ${1:char} ${2:c}; cin >> $2;
+# ${3}
+# endsnippet
+#
+# snippet read_vec1D "init & read vector1D" i
+# vector<${1:int}> ${2:a}(${3:n});
+# for(int i=0; i<$3; i++){ cin >> $2[i];}
+# ${4}
+# endsnippet
+#
+# snippet read_vec2D "init & read vector2D" i
+# vector<vector<${1:int}>> ${2:b}(${3:n}, vector<$1>(${4:m}));
+# for(int i=0; i<$3; i++){
+#     for(int j=0; j<$4; j++){
+#         cin >> $2[i][j];
+#     }
+# }
+# ${5}
+# endsnippet
+#
+# snippet cin "cin >> val;" i
+# cin >> ${1:a[i]};
+# endsnippet
+#
+# snippet ixt "extend cin" i
+# >> ${1}
+# endsnippet
+#
+# snippet cinvec1D "input vector1D" i
+# for(auto& it:${1:a}){cin >> it;}
+# ${2}
+# endsnippet
+#
+# snippet cinvec2D "input vector2D" i
+# for(int i=0; i<${1:b}.size(); i++){
+#     for(int j=0; j<$1[i].size(); j++){
+#         cin >> $1[i][j];
+#     }
+# }
+# ${2}
+# endsnippet
+#
+# snippet narr "read n and a(n)" i
+# int ${1:n}; cin >> $1;
+# vector<int> ${2:a}($1);
+# for(int i=0; i<$1; i++){ cin >> $2[i];}
+# ${0}
+# endsnippet
+#
+snippet cin_xgraph "input edges of graph" i
+adj.assign(n+1, vector<int>());
+edges.clear();
+for(int i=0; i<${1:m}; i++){
+	int x,y; cin >> x >> y;
+	adj[x].push_back(y);
+	adj[y].push_back(x);
+	edges.push_back({x, y});
+}
+${2}
+endsnippet
+#
+# #		+-----------------+
+# #		|
+# #		|	Output & Trace
+# #		|
+# #		+-----------------+
+# snippet cout "cout val endl" i
+# cout << ${1:} << "\n";${2}
+# endsnippet
+#
+#
+snippet pyes "put yes" i
+put("YES");
+endsnippet
+
+snippet pno "put no" i
+put("NO");
+endsnippet
+#
+snippet coutf "cout fixed endl" i
+cout<<fixed<<setprecision(10)<< ${1:} <<"\n";${2}
+endsnippet
+#
+snippet nex "endl" i
+cout << '\n';
+endsnippet
+#
+# snippet coutvec1D "cout v<T> endl" i
+# for(auto it=${1:a}.begin(); it!=$1.end(); it++){
+#     cout << *it << " \n"[it+1==$1.end()];
+# }${2}
+# endsnippet
+#
+# snippet coutvec2D "cout vv<T> endl" i
+# for(auto x:${1:big}){
+#     for(auto it=x.begin(); it!=x.end(); it++){
+#         cout << *it << " \n"[it+1==x.end()];
+#     }
+# }${2}
+# endsnippet
+#
+snippet cout_xgraph "cout adj-list" i
+for(int i=0; i<${1:adj}.size(); i++){
+	cout << i << ": ";
+	for(auto x: $1[i]){
+		cout << x << ' ';
+	}
+	cout << "\n";
+}
+endsnippet
+#
+# snippet cout_xqueue "cout .top-.pop- endl" i
+# while(!${1:}.empty()){
+#     cout << $1.${2:top}() << ' ';
+#     $1.pop();
+# }
+# cout << "\n";${3}
+# endsnippet
+#
+# snippet couts "cout val space" i
+# cout << ${1:} << ' ';${2}
+# endsnippet
+#
+# snippet cout_xyes "cout yes endl" i
+# cout << "YES" << "\n";${0}
+# endsnippet
+#
+# snippet cout_xnoo "cout no endl" i
+# cout << "NO" << "\n";${0}
+# endsnippet
+#
+# snippet ext "extend cout" i
+# << ' ' << ${0}
+# endsnippet
+#
+# #		+-----------------+
+# #		|
+# #		|	Loops
+# #		|
+# #		+-----------------+
+# # Missing stuff in ~/.vim/Ultisnips/c.snippets
+# snippet fore "for each in container" i
+# for(auto ${1:x}:${2:container}){
+#     ${3}
+# }
+# ${4}
+# endsnippet
+
+
+snippet forc "char loop" i
+for(char ${1:c}=${2:'a'}; ${1}<=${2:'z'} ; ${1}++){
+	${3}
+}
+endsnippet
+# snippet foritr "for loop iterator" i
+# for(auto it=${1:v}.begin(); it!=$1.end(); it++){
+#     ${2}
+# }
+# ${3}
+# endsnippet
+#
+# snippet revit "itr-loop" i
+# for(auto it=${1:}.begin(); it!=$1.end(); it++){
+#     ${2:}
+# }
+# endsnippet
+# #		+-----------------+
+# #		|
+# #		|	std builtins
+# #		|
+# #		+-----------------+
+# snippet std_all "all a" i
+# ${1:}.begin(),$1.end()
+# endsnippet
+#
+# snippet stdf "std operation" i
+# ${1:lower_bound}(${2:}.begin(),$2.end(), ${3})${4}
+# endsnippet
+#
+snippet std_lower "lower_bound" i
+lower_bound(${1:}.begin(),$1.end(),${2:val})${3:-$1.begin()};
+endsnippet
+#
+snippet std_upper "upper_bound" i
+upper_bound(${1:}.begin(),$1.end(),${2:val})${3:-$1.begin()};
+endsnippet
+#
+# snippet std_count "count vals in a" i
+# count(${1}.begin(),$1.end(), ${2})${3}
+# endsnippet
+#
+# snippet std_sort "sort vector a" i
+# sort(${1:}.begin(),$1.end());$2
+# endsnippet
+#
+snippet std_is_sorted "if sorted" i
+is_sorted(${1:}.begin(),$1.end())
+endsnippet
+#
+# snippet std_reverse "reverse vector a" i
+# reverse(${1:}.begin(),$1.end());
+# endsnippet
+#
+# snippet std_revsort "rev-sort vector a" i
+# sort(${1:}.rbegin(),$1.rend());
+# endsnippet
+#
+# snippet std_maxof "max_element" i
+# max_element(${1:}.begin(),$1.end())${2}
+# endsnippet
+#
+# snippet std_minof "min_element" i
+# min_element(${1:}.begin(),$1.end())${2}
+# endsnippet
+#
+#		+-----------------+
+#		|
+#		|	Custom snips
+#		|
+#		+-----------------+
+# snippet lenof "int size a" i
+# (int)${0:}.size()
+# endsnippet
+#
+# snippet amax "a=max(a,b)" i
+# ${1:first} = max($1, ${2:second});
+# endsnippet
+#
+# snippet amin "a=min(a,b)" i
+# ${1:first} = min($1, ${2:second});
+# endsnippet
+
+snippet pdiv "prop div a/b" i
+(1.0*(${1:numer}))/(1.0*(${2:denom}));
+endsnippet
+
+# snippet ass "a.assign(b,c)" i
+# ${1:}.assign(${2:}, ${3:});
+# endsnippet
+
+snippet unique_and_cnts "get uniq arr and cnts" i
+vector<${1:int}> ${2:uniq}={${3:a}[0]};
+vector<int> ${4:cnts}={1};
+for(int i=1; i<${5:(int)$3.size()}; i++){
+	if($3[i] != $2.back()){
+		$2.push_back($3[i]); $4.push_back(1);
+	}
+	else $4.back()++;
+}
+int m=$4.size();
+${6}
+endsnippet
+
+
+
+
+
+
+# #		+-----------------+
+# #		|
+# #		|	base driver
+# #		|
+# #		+-----------------+
+snippet cmain "clang main" i
+#include<stdio.h>
+#include<stdlib.h>
+/**/
+int main(){
+	${1}
+
+	return 0;
+}
+endsnippet
+#
+# snippet scan "scanf %x" i
+# scanf("%${1:type}",&${2:var});
+# endsnippet
+#
+#		+-----------------+
+#		|
+#		|	Loops
+#		|
+#		+-----------------+
+# snippet for "for loop custom" i
+# for(${1:int} ${2:i}=${3:0}; $2${4:<}${5:n}; $2${6:++}){
+#     ${VISUAL}$0
+# }
+# endsnippet
+#
+# snippet fori "for-loop-i inc" i
+# for(int i=${1:0}; i<${2:n}; i++){
+#     ${3}
+# }
+# ${4}
+# endsnippet
+#
+# snippet forb "for-loop-i dec" i
+# for(int i=${1:n-1}; i>=${2:0}; i--){
+#     ${3}
+# }
+# endsnippet
+#
+# snippet forj "for-loop-j inc" i
+# for(int j=${1:0}; j<${2:n}; j++){
+#     ${3}
+# }
+# endsnippet
+#
+# snippet forc "for-loop-condition" i
+# for(char ${1:c}=${2:'a'}; c${3:<='z'}; c++){
+#     ${4}
+# }
+# endsnippet
+#
+
+snippet atc "atc driver code" i
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+// {@
+#ifdef local
+#include "debug.h"
+#else
+#pragma GCC optimize("O3,Ofast,unroll-loops")
+#define _(...)
+#endif
+using ll = long long;
+typedef vector<int> vi;
+typedef vector<string> vs;
+typedef vector<vector<int>> vvi;
+typedef pair<int, int> pii;
+typedef vector<bool> vb;
+typedef vector<vector<char>> vvc;
+template <class T>
+using pri = priority_queue<T>;
+typedef vector<char> vc;
+template <class T>
+using rpi = priority_queue<T, vector<T>, greater<T>>;
+typedef map<int, int> mii;
+
+#define rep(i, a, b) for (int i = a; i < (int)b; i++)
+#define rev(i, a, b) for (int i = a; i > (int)b; i--)
+#define revit(a) for (auto it = (a).begin(); it != (a).end(); it++)
+#define each(x, a) for (auto& x : a)
+#define make(a, b, c) (a).assign(b, c)
+#define all(a) (a).begin(), (a).end()
+#define rall(a) reverse((a).begin(), (a).end())
+#define uniq(a) (a).erase(unique((a).begin(), (a).end()), (a).end())
+#define S(a) sort((a).begin(), (a).end())
+#define R(a) sort((a).rbegin(), (a).rend())
+#define len(a) (int)(a).size()
+#define read(T, ...) \
+	T __VA_ARGS__;   \
+	rd(__VA_ARGS__)
+
+template <class T>
+void rd(T& a)
+{
+	cin >> a;
+}
+template <class T>
+void rd(vector<T>& a) { each(x, a) rd(x); }
+template <class T>
+void rd(vector<vector<T>>& a) { each(x, a) rd(x); }
+template <class T, class... A>
+void rd(T& x, A&... a)
+{
+	cin >> x;
+	rd(a...);
+}
+template <class T>
+void print(T a) { cout << a << '\n'; }
+template <class T>
+void print(vector<T> a)
+{
+	int n = len(a);
+	rep(i, 0, n) { cout << a[i] << " \n"[i == n - 1]; }
+}
+template <class T>
+void print(vector<vector<T>> a) { each(x, a) print(x); }
+template <class T, class... A>
+void print(T x, A... a)
+{
+	cout << x << ' ';
+	print(a...);
+}
+
+template <class T>
+T min(vector<T> a) { return *min_element(all(a)); }
+template <class T>
+T max(vector<T> a) { return *max_element(all(a)); }
+template <class T, class U>
+T min(T a, U b)
+{
+	if (a > b)
+		a = b;
+	return a;
+}
+template <class T, class U>
+T max(T a, U b)
+{
+	if (a < b)
+		a = b;
+	return a;
+}
+template <class T>
+T sum(vector<T> a)
+{
+	T x = 0;
+	each(y, a) x += y;
+	return x;
+}
+
+#define put(x)    \
+	{             \
+		print(x); \
+		return;   \
+	}
+#define pb push_back
+#define amin(a, b) \
+	if (a > b)     \
+		a = b;
+#define amax(a, b) \
+	if (a < b)     \
+		a = b;
+#define cts(a, b) count(all(a), b)
+#define ceil(a, b) ((a + b - 1) / b)
+
+const long double eps = 1e-6, pi = 2 * acos(0.0), E = exp(1.0), INF = 1e18;
+int N = 2e5 + 5, mod = 1e9 + 7, mod2 = 998244353;
+long long inf = (sizeof(int) == sizeof(ll)) ? LLONG_MAX : INT_MAX, ninf = (sizeof(int) == sizeof(ll)) ? LLONG_MIN : INT_MIN;
+int nc2(int n) { return (n * (n - 1)) / 2; }
+int msb(int n) { return log2(n); }
+int lsb(int n) { return __builtin_ctzll(n); }
+int madd(int a, int b)
+{
+	a = (a + 0ll + b) % mod;
+	return (a < 0) ? a + mod : a;
+}
+int mmul(int a, int b)
+{
+	a = (a * 1ll * b) % mod;
+	return (a < 0) ? a + mod : a;
+}
+int POW(int x, int y)
+{
+	int a = 1;
+	while (y > 0) {
+		if (y & 1)
+			a = mmul(a, x);
+		x = mmul(x, x);
+		y /= 2;
+	}
+	return a;
+}
+int msub(int a, int b) { return madd(a, -b); }
+// @}
+
+void test_case(int _i = 1)
+{
+	${1}
+}
+
+void _init()
+{
+	N = 2000005, mod = 1000000007; // 998244353;
+}
+int32_t main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	clock_t c = clock();
+	_init();
+	int T = 1;	
+	for (int i = 1; i <= T; i++) {
+		test_case(i);
+	}
+	cerr << "\n time	" << (clock() - c) / 1e3 << "ms";
+}
+endsnippet
+
+snippet pbds "ord set" i
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+#define ordered_set tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update>
+// ordered_set oset;
+// oset.find_by_order(idx)  -> iterator to s[idx]
+// oset.order_of_key(value) -> #elements strictly less than value
+
+endsnippet
+
+
+snippet fun "auto function" i
+auto ${1:name} = [&](${2:/**/}) -> ${3:int}{
+	${4}
+};
+endsnippet
+
+snippet main "basic"
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+#define put(x) {cout<<(x)<<'\n';return;}
+
+void solve(int _i=0){
+	${2}
+}
+
+int32_t main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+
+	int T;${1:
+	cin >> T;}
+	for(int i=1; i<=T; i++){
+		solve(i);
+	}
+}
+endsnippet
+
+
+#		+-----------------+
+#		|
+#		|	base driver
+#		|
+#		+-----------------+
+snippet red "red driver code" i
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+// {@ Initialize
+#ifdef local
+#include "debug.h"
+#else
+#define _(...)
+#endif
+using ll = long long;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+template <class T>
+using rpi = priority_queue<T, vector<T>, greater<T>>;
+template <typename T>
+using pri = priority_queue<T>;
+long long inf = (sizeof(int) == sizeof(ll)) ? LLONG_MAX : INT_MAX;
+long long ninf = (inf == INT_MAX) ? INT_MIN : LLONG_MIN;
+int N = 2e5 + 5, mod = 1e9 + 7, mod2 = 998244353;
+#define put(x)               \
+	{                        \
+		cout << (x) << '\n'; \
+		return;              \
+	}
+#define amin(a, b) \
+	if (a > b)     \
+		a = b;
+#define amax(a, b) \
+	if (a < b)     \
+		a = b;
+#define ceil(a, b) ((a + b - 1) / a)
+#define pi pair<int, int>
+#define pb push_back
+// @}
+
+
+void _solve_(int _i)
+{
+	${2:}
+}
+
+void _init_()
+{
+	N = 200005, mod = 1000000007; // 998244353;
+}
+int32_t main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	clock_t c = clock();
+	_init_();
+	int T = 1;${1:
+	cin >> T;}
+	for (int i = 1; i <= T; i++) {
+		_solve_(i);
+	}
+
+	cerr << "\n time\t" << (clock() - c) / 1e3 << "ms";
+}
+
+endsnippet
+# snippet yes "yes" i
+# cout << "YES" << '\n';
+# endsnippet
+
+snippet ayes "ayes" i
+cout << "Yes" << '\n';
+endsnippet
+
+snippet no "no" i
+cout << "NO" << '\n';
+endsnippet
+
+snippet ano "no" i
+cout << "No" << '\n';
+endsnippet
+
+snippet letters "letters" i
+"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+endsnippet 
+
+snippet numbers "numbers" i
+"0123456789"
+endsnippet
+
+
+
+snippet small "limited" i
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+
+// {@
+#ifdef local
+#include "debug.h"
+#else
+#pragma GCC optimize("O3,Ofast,unroll-loops")
+#define _(...)
+#endif
+
+#define rep(i, a, b) for (int i = a; i < (int)b; i++)
+#define rall(a) reverse((a).begin(), (a).end())
+#define all(a) (a).begin(), (a).end()
+#define tcT template <class T>
+
+using ll = long long;
+using vi = vector<int>;
+using vs = vector<string>;
+using vvi = vector<vector<int>>;
+using vvi = vector<vector<int>>;
+using pii = pair<int, int>;
+using mii = map<int, int>;
+tcT using V = vector<T>;
+tcT using pri = priority_queue<T>;
+tcT using rpi = priority_queue<T, vector<T>, greater<T>>;
+
+tcT T max(vector<T> a)
+{
+	return *max_element(all(a));
+}
+tcT T min(vector<T> a)
+{
+	return *min_element(all(a));
+}
+tcT void print(T a, char sep = '\n') { cout << a << sep; }
+tcT void print(vector<T> a)
+{
+	int n = a.size();
+	rep(i, 0, n) { cout << a[i] << " \n"[i == n - 1]; }
+}
+tcT void print(vector<vector<T>> a)
+{
+	for (auto x : a)
+		print(x);
+}
+#define put(x)    \
+	{             \
+		print(x); \
+		return;   \
+	}
+
+#define pb push_back
+#define ceil(a, b) ((a + b - 1) / b)
+#define nc2(n) (n * (n - 1)) / 2
+
+long long inf = (sizeof(int) == sizeof(ll)) ? LLONG_MAX : INT_MAX;
+long long ninf = (sizeof(int) == sizeof(ll)) ? LLONG_MIN : INT_MIN;
+// @}
+
+int N = 200005, mod = 1000000007, mod2 = 998244353;
+
+void test_case(int _i = 1)
+{
+	${2:}
+}
+
+void _init_() {
+	
+}
+int32_t main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	clock_t c = clock();
+	_init_();
+	int T = 1;${1:
+	cin >> T;}
+	for (int i = 1; i <= T; i++) {
+		test_case(i);
+	}
+	cerr << "\n time	" << (clock() - c) / 1e3 << "ms";
+}
+endsnippet
+
+
+snippet short "cpp cond" i
+#include "bits/stdc++.h"
+#define int long long
+using namespace std; namespace red { // {@
+	#ifdef local
+		#include "debug.h"
+	#else
+		#define _(...)
+	#endif
+	#define rep(i,a,b)	for(int i=a; i<(int)b; i++)
+	#define rev(i,a,b)	for(int i=a; i>(int)b; i--)
+	#define revit(a)	for(auto it=(a).begin(); it!=(a).end(); it++)
+	#define each(x,a)	for(auto &x:a)
+	#define all(a)		(a).begin(),(a).end()
+	#define read(T,...)	T __VA_ARGS__;rd(__VA_ARGS__)
+	#define put(x)		{print(x);return;}
+	#define pb  		push_back
+	typedef vector<int> vi;typedef vector<string> vs;typedef vector<vector<int>> vvi;typedef pair<int,int> pii;typedef vector<bool> vb;template<class T>using pri=priority_queue<T>;typedef map<int,int> mii;typedef vector<char> vc;template<class T>using rpi=priority_queue<T,vector<T>,greater<T>>;template<class T,class U>void amax(T &a,U b){if(a<b)a=b;}template<class T,class U>void amin(T &a,U b){if(a>b)a=b;}void rall(string &a){reverse(all(a));}template<class T>void rall(vector<vector<T>>&a){reverse(all(a));}bool is_pal(string s){string r=s;rall(r);return r==s;}bool getBit(int n,int x){return n&(1<<x);}
+	template<class T>void S(vector<T>&a){sort(all(a));}template<class T>void R(vector<T>&a){sort(a.rbegin(),a.rend());}template<class T>void S(vector<vector<T>>&a){sort(all(a));}template<class T>void R(vector<vector<T>>&a){sort(a.rbegin(),a.rend());}void S(string &a){sort(all(a));}void R(string &a){sort(a.rbegin(),a.rend());}template<class T>int len(vector<T>a){return a.size();}template<class T>int len(vector<vector<T>> a){return a.size();}int len(string a){return a.size();}template<class T>void rall(vector<T>&a){reverse(all(a));}int expo(int n,int k){int c=0;while(n%k==0){n/=k,c++;}return c;}
+	template<class T>void rd(T& a){cin>>a;}template<class T>void rd(vector<T>& a){each(x,a)rd(x);}template<class T>void rd(vector<vector<T>>&a){each(x,a)rd(x);}template<class T,class ...A>void rd(T& x, A&...a){cin>>x; rd(a...);}template<class T>void print(T a){cout<<a<<'\n';}template<class T>void print(vector<T>a){int n=len(a);rep(i,0,n){cout<<a[i]<<(i==n-1?"\n":" ");}}template<class T>void print(vector<vector<T>>a){each(x,a)print(x);}template<class T,class ...A>void print(T x,A...a){cout<<x<<' ';print(a...);}int msb(int n){return log2(n);}int lsb(int n){return __builtin_ctzll(n);}
+	template<class T>T min(vector<T>a){return *min_element(all(a));}template<class T>T max(vector<T>a){return *max_element(all(a));}template<class T, class U> T min(T a, U b){if(a>b) a=b;return  a;}template<class T, class U> T max(T a, U b){if(a<b) a=b;return  a;}template<class T>int cts(vector<T>a,T x){return count(all(a),x);}int cts(string a,char x){return count(all(a),x);}template<class T>T sum(vector<T>a){T x=0;each(y,a)x+=y;return x;}template<class T,class U> double pdiv(T a,U b){return (1.0*a)/(1.0*b);}bool isprime(int n){if((n&1)^1 || n<3)return (n==2);for(int i=3;i*i<=n;i+=2){if(n%i==0)return 0;}return 1;}
+	const long long inf=LLONG_MAX, ninf=LLONG_MIN; const long double INF=1e18,eps=1e-6,pi=2*acos(0.0),E=exp(1.0);int nc2(int n){return (n*(n-1))/2;}; int ceil(int a,int b){return (a+b-1)/b;}int POW(int x,int y){int a=1;while(y){if(y&1)a=(a*1ll*x)%mod;x=(x*1ll*x)%mod;y/=2;}return a;}int madd(int a,int b){a=(a+b)%mod;return (a<0)?a+mod:a;}int msub(int a,int b){a=(a-b)%mod;return (a<0)?a+mod:a;}int mmul(int a,int b){a=(a*1ll*b)%mod;return (a<0)?a+mod:a;}int INV(int x){return POW(x,mod-2);}void togBit(int& n,int x){n^=(1<<x);}int oneBits(int n){return __builtin_popcountll(n);}
+}	using namespace red; const int N=200005, mod=1000000007, mod2=998244353; // @}
+
+void test_case(int _i = 1){
+	${2}
+}
+
+void init(){}
+int32_t main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);clock_t c=clock();
+	init();
+	int T=1; ${1:cin>>T;}
+	for(int i = 1; i <= T; i++) {
+		test_case(i);
+	}
+	#ifndef codeTest
+		cerr<<"\n  time	"<<(clock()-c)/1e3<<"ms ";
+	#endif
+}/*
+⠀⠀⠀⠀⠀⢀⡴⣫⠎⠙⣡⠞⣡⠖⢋⡥⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⡟⣿⡿⠁⠀⠙⢿⣿⣿⣿⣿⣿⠙⢿⣿⣿⣿⣿⣿⣶⣄⡀⠀⠀⠀⠀⠀⠈⠓⠁⠀⢉⠲⣍⠳⣄⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢠⢮⣞⠕⣰⢫⠄⠈⠁⡴⠋⠰⠂⠀⠀⠀⠀⢀⣴⣿⣿⣿⡟⠀⣿⡃⠀⠀⠀⠈⣻⣿⣿⣿⣿⣇⣀⠻⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⢀⣀⡫⡕⢌⠣⡈⢣⡀⠀⠀⠀
+⠀⠀⠀⢀⢾⣿⠏⡼⣵⠋⣠⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⠴⢺⡏⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⡇⠀⠉⠛⣿⣿⠹⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠈⠳⣝⢎⢮⢳⡙⢄⢱⣄⠀⠀
+⠀⠀⠀⣞⣜⡏⣼⣽⠃⡼⢃⡴⠂⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⠋⠀⠘⠃⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⡇⠀⠀⠀⢘⣿⠷⣽⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠈⠈⠀⢀⠀⣈⢦⠽⡆⠀
+⠀⠀⢼⢱⡍⠀⠃⠃⠸⢡⡟⠀⢠⡞⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⢇⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡇⣠⣤⣒⢍⣸⡀⠈⢿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⢀⢰⡘⣎⢧⠘⡎⣧⠹⡄
+⠀⠀⢸⢠⠇⡞⢰⠀⡆⢠⠀⢀⠈⠤⠤⠶⠿⢟⣿⣿⣿⣿⣻⡿⠀⣈⠭⠶⣶⣤⣤⣀⠀⠀⠀⠀⠐⡶⠺⢫⡟⠁⣶⣶⡎⠙⢦⠘⣿⡏⣿⣿⣿⣿⣿⣧⡀⠀⠘⣆⢣⢸⠈⡆⢹⣹⡆⠇
+⠀⠀⢸⢸⠀⡇⢿⢰⡇⣸⢀⡏⠀⡀⢀⡀⠀⣼⣿⣿⣿⣿⠻⣧⠞⠁⣾⣿⠆⠹⡄⠀⠙⡆⠀⠀⠀⠓⠊⡟⠀⠀⠙⠛⠁⠀⠈⡇⢿⢷⢿⣿⣿⣿⣿⣟⠛⠂⠀⠘⠘⠈⠀⠁⠈⠃⡇⡀
+⠀⠀⢸⢸⡄⣇⢸⠸⡇⢻⠈⡇⢸⠇⠘⠀⢰⣿⣿⣿⣿⡏⠀⡇⠀⠀⠈⠁⠀⠀⡇⠀⢰⣣⠀⠀⠀⠀⠀⠸⣀⠀⠀⠀⠀⠀⢠⠃⠘⠈⢸⣿⣿⣿⣿⣿⡀⢀⡄⣶⠀⡆⠀⢰⠀⡇⡇⡇
+⠀⠀⠸⡿⡇⡙⠘⠃⠃⠈⠀⣁⠈⡅⠀⣦⣿⣿⣿⣿⣿⣧⠀⢧⠀⠀⠀⠀⢀⠔⠀⠀⠸⡍⠀⠀⠀⠀⠀⠀⣌⡑⡖⠒⢲⠚⣁⠄⠀⠀⢸⣿⢏⣽⣿⣿⣧⢸⢡⠇⢸⠃⢀⡎⣰⢡⣧⠇
+⠀⠀⠀⢹⣧⢹⡰⡄⣦⠀⣆⠸⡄⣹⣾⣿⣿⡿⣿⡿⣿⡟⠀⠀⠙⠒⠒⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠉⠉⠉⠏⠀⠀⠀⠀⣾⢣⡏⠸⣿⣿⣿⣧⣈⠀⠁⢀⠈⠀⣡⢫⠎⠀
+⠀⠀⢦⡀⢫⢧⢣⡹⣜⢧⠘⢦⠹⣄⠳⡀⢳⢀⣿⣷⡝⣷⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠖⠒⠚⠋⠉⠉⠉⠉⠉⠐⠒⡆⠤⣄⣀⠀⠀⢸⡏⣸⣓⢧⣿⡇⡴⢃⣞⡞⢠⠞⡼⣱⣣⠏⠀⠀
+⠀⠀⠔⠛⠲⣽⣷⡳⡝⠎⠓⠀⠀⠀⠀⣄⠀⣼⣿⣿⣽⡞⡆⠀⠀⡠⡔⠊⠉⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠇⠀⡿⢸⠀⠀⣼⠕⢡⠏⡼⠿⣿⡤⠋⠋⠴⠣⢾⠞⣱⠋⠀⠀⠀
+⠀⠀⡀⠀⠀⠀⢙⣷⣄⡀⢠⡀⢢⡙⢄⠘⢮⡉⢩⡿⣿⣿⣻⡄⠀⣿⣵⡠⣴⣾⡿⠋⢁⡠⠤⠒⠒⠒⠤⢄⡀⠈⠻⣿⣿⣳⠇⠀⢰⡟⠊⡡⣾⡣⣦⠞⣡⠞⣠⢄⡴⣠⠞⠁⠀⠀⠀⠀
+⠀⠀⢈⣆⣴⡾⠛⠉⠻⢽⡲⣝⢦⡙⢦⣙⠂⠁⠀⠀⣬⣿⣿⣻⡄⠘⢿⣶⣿⠋⣠⣞⣁⣀⡤⠤⠤⠤⠤⠤⠬⣑⣄⣈⡻⠋⠀⢠⣿⣶⣫⢄⡠⢎⡡⠞⣥⣾⠕⣫⠞⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⣽⣿⣿⣷⣄⠀⠀⠀⠙⢮⡓⠬⣓⠎⢁⠀⢀⡲⣬⡻⠭⣲⡽⣆⠀⠙⢷⡋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡼⠊⠀⠀⣠⠟⣯⠘⢚⣩⢴⣫⢞⡴⢉⡤⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠉⠢⣌⠓⢬⣙⡲⢭⣓⡯⠽⠁⢀⡼⣳⣦⡀⠉⠑⠒⠤⠤⠤⠤⠤⠴⠒⠒⠉⠁⠀⢀⣤⡞⣡⢿⣻⢅⠐⠺⠽⣚⡭⠖⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢿⣿⣿⣿⡻⣿⣿⣿⣦⡀⠀⠀⠈⠳⣄⠀⠉⠓⠪⠭⢍⣰⢷⣯⣗⣊⢹⣶⣤⣀⠀⠒⠒⠒⠒⠒⠚⠉⣀⣤⣾⡟⣇⡇⢨⣿⠮⣻⠯⠖⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠻⣿⣿⣿⣦⣍⡛⠻⢿⣦⡀⠀⠀⠀⠑⢤⡀⠀⠀⠀⠈⠙⠺⠯⠭⣼⠈⢻⣸⢿⢲⢢⢤⢤⢶⣶⣿⣿⣾⣿⠃⡼⡷⠒⠚⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⡈⠻⣿⣿⣿⣿⣷⣤⡹⣿⣦⣀⠀⠀⠀⠙⢦⡀⠀⠀⠀⠀⠀⠀⢸⠀⠀⢹⢼⢸⣸⢸⢸⢸⣿⡇⡟⡟⡣⠊⠀⣇          kaizoku-ou ni .. ore wa naru!*/
+endsnippet
+
+
+snippet set_erase "set_erase lb" i
+${1:ms}.erase($1.lower_bound($2));
+endsnippet
+
+
+
+snippet form "cpp formatted" i
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+// {@
+#ifdef local
+#include "debug.h"
+#else
+#pragma GCC optimize("O3,Ofast,unroll-loops")
+#define _(...)
+#endif
+using ll = long long;
+typedef vector<int> vi;
+typedef vector<string> vs;
+typedef vector<vector<int>> vvi;
+typedef pair<int, int> pii;
+typedef vector<bool> vb;
+typedef vector<vector<char>> vvc;
+template <class T>
+using pri = priority_queue<T>;
+typedef vector<char> vc;
+template <class T>
+using rpi = priority_queue<T, vector<T>, greater<T>>;
+typedef map<int, int> mii;
+
+#define rep(i, a, b) for (int i = a; i < (int)b; i++)
+#define rev(i, a, b) for (int i = a; i > (int)b; i--)
+#define revit(a) for (auto it = (a).begin(); it != (a).end(); it++)
+#define each(x, a) for (auto& x : a)
+#define make(a, b, c) (a).assign(b, c)
+#define all(a) (a).begin(), (a).end()
+#define rall(a) reverse((a).begin(), (a).end())
+#define uniq(a) (a).erase(unique((a).begin(), (a).end()), (a).end())
+#define S(a) sort((a).begin(), (a).end())
+#define R(a) sort((a).rbegin(), (a).rend())
+#define len(a) (int)(a).size()
+#define read(T, ...) \
+	T __VA_ARGS__;   \
+	rd(__VA_ARGS__)
+
+template <class T>
+void rd(T& a)
+{
+	cin >> a;
+}
+template <class T>
+void rd(vector<T>& a) { each(x, a) rd(x); }
+template <class T>
+void rd(vector<vector<T>>& a) { each(x, a) rd(x); }
+template <class T, class... A>
+void rd(T& x, A&... a)
+{
+	cin >> x;
+	rd(a...);
+}
+template <class T>
+void print(T a) { cout << a << '\n'; }
+template <class T>
+void print(vector<T> a)
+{
+	int n = len(a);
+	rep(i, 0, n) { cout << a[i] << " \n"[i == n - 1]; }
+}
+template <class T>
+void print(vector<vector<T>> a) { each(x, a) print(x); }
+template <class T, class... A>
+void print(T x, A... a)
+{
+	cout << x << ' ';
+	print(a...);
+}
+
+template <class T>
+T min(vector<T> a) { return *min_element(all(a)); }
+template <class T>
+T max(vector<T> a) { return *max_element(all(a)); }
+template <class T, class U>
+T min(T a, U b)
+{
+	if (a > b)
+		a = b;
+	return a;
+}
+template <class T, class U>
+T max(T a, U b)
+{
+	if (a < b)
+		a = b;
+	return a;
+}
+template <class T>
+T sum(vector<T> a)
+{
+	T x = 0;
+	each(y, a) x += y;
+	return x;
+}
+
+#define put(x)    \
+	{             \
+		print(x); \
+		return;   \
+	}
+#define pb push_back
+#define amin(a, b) \
+	if (a > b)     \
+		a = b;
+#define amax(a, b) \
+	if (a < b)     \
+		a = b;
+#define cts(a, b) count(all(a), b)
+#define ceil(a, b) ((a + b - 1) / b)
+
+const long double eps = 1e-6, pi = 2 * acos(0.0), E = exp(1.0), INF = 1e18;
+int N = 2e5 + 5, mod = 1e9 + 7, mod2 = 998244353;
+long long inf = (sizeof(int) == sizeof(ll)) ? LLONG_MAX : INT_MAX, ninf = (sizeof(int) == sizeof(ll)) ? LLONG_MIN : INT_MIN;
+int nc2(int n) { return (n * (n - 1)) / 2; }
+int msb(int n) { return log2(n); }
+int lsb(int n) { return __builtin_ctzll(n); }
+int madd(int a, int b)
+{
+	a = (a + 0ll + b) % mod;
+	return (a < 0) ? a + mod : a;
+}
+int mmul(int a, int b)
+{
+	a = (a * 1ll * b) % mod;
+	return (a < 0) ? a + mod : a;
+}
+int POW(int x, int y)
+{
+	int a = 1;
+	while (y > 0) {
+		if (y & 1)
+			a = mmul(a, x);
+		x = mmul(x, x);
+		y /= 2;
+	}
+	return a;
+}
+int msub(int a, int b) { return madd(a, -b); }
+// @}
+
+void test_case(int _i = 1)
+{
+	${2}
+}
+
+void _init()
+{
+	N = 2000005, mod = 1000000007; // 998244353;
+}
+int32_t main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	clock_t c = clock();
+	_init();
+	int T = 1;${1:
+	cin >> T;}
+	for (int i = 1; i <= T; i++) {
+		test_case(i);
+	}
+	cerr << "\n time	" << (clock() - c) / 1e3 << "ms";
+}
+endsnippet
+
+
+
+
+
+
+# copied from .c snippets
+#         +-----------------+
+#         |
+#         |	declare
+#         |
+#         +-----------------+
+# if something's missing, it'll probably be in
+# ~/.vim/bundle/vim-snippets/snippets/cpp.snippets
+
+snippet declare_vec2d "init vector2d" i
+vector<vector<${1:int}>> ${2:big};
+$2.assign(${3:n},vector<$1>(${4:}));
+endsnippet
+
+
+
+snippet vi "v int" i
+vector<int> ${1}
+endsnippet
+
+snippet vv "vv" i
+vector<vector<${1:int}>> ${2}
+endsnippet
+
+snippet pair "pair" i
+pair<${1:int},${2:int}>
+endsnippet
+
+snippet pii "pii" i
+pair<int,int>
+endsnippet
+
+snippet vs "v str" i
+vector<string> ${1}
+endsnippet
+
+snippet pb "pb" i
+push_back
+endsnippet
+
+
+
+snippet declare_maxheap "initialize priority_queue" i
+priority_queue<${1:int}> ${2:};
+endsnippet
+
+snippet declare_minheap "initialize rev prique" i
+priority_queue<${1:int},vector<$1>,greater<$1>> ${2:};
+endsnippet
+
+#		+-----------------+
+#		|
+#		|	word-fills
+#		|
+#		+-----------------+
+snippet vb "vec bool" i
+vector<bool> ${1}
+endsnippet
+
+snippet ld "long double" i
+long double
+endsnippet
+
+snippet dbg "dbg line" i
+cerr << "dbg: " << ${1:"line- "<<__LINE__} << "\n";
+${2}
+endsnippet
+
+#		+-----------------+
+#		|
+#		|	Input & Read
+#		|
+#		+-----------------+
+snippet read_n "init & read n" i
+${1:int} ${2:n}; cin >> $2;
+${3}
+endsnippet
+
+snippet read_s "init & read s" i
+string ${1:s}; cin >> $1;
+${2}
+endsnippet
+
+snippet read_n_m "init & read n m" i
+int ${1:n},${2:m}; cin >> $1 >> $2;
+${3}
+endsnippet
+
+snippet read_n_m_k "init & read n m k" i
+int ${1:n},${2:m},${3:k};
+cin >> $1 >> $2 >> $3;
+${4}
+endsnippet
+
+snippet read_n_s "init & read n s" i
+int ${1:n}; string ${2:s};
+cin >> $1 >> $2;
+${3}
+endsnippet
+
+snippet read_s_t "init & read s t" i
+string ${1:s},${2:t}; cin >> $1 >> $2;
+${3}
+endsnippet
+
+snippet read_c "init & read c" i
+${1:char} ${2:c}; cin >> $2;
+${3}
+endsnippet
+
+snippet read_vec1D "init & read vector1D" i
+vector<${1:int}> ${2:a}(${3:n});
+for(int i=0; i<$3; i++){ cin >> $2[i];}
+${4}
+endsnippet
+
+snippet read_vec2D "init & read vector2D" i
+vector<vector<${1:int}>> ${2:b}(${3:n}, vector<$1>(${4:m}));
+for(int i=0; i<$3; i++){
+	for(int j=0; j<$4; j++){
+		cin >> $2[i][j];
+	}
+}
+${5}
+endsnippet
+
+snippet cin "cin >> val;" i
+cin >> ${1:a[i]};
+endsnippet
+
+snippet ixt "extend cin" i
+>> ${1}
+endsnippet
+
+snippet cinvec1D "input vector1D" i
+for(auto& it:${1:a}){cin >> it;}
+${2}
+endsnippet
+
+snippet cinvec2D "input vector2D" i
+for(int i=0; i<${1:b}.size(); i++){
+	for(int j=0; j<$1[i].size(); j++){
+		cin >> $1[i][j];
+	}
+}
+${2}
+endsnippet
+
+snippet narr "read n and a(n)" i
+int ${1:n}; cin >> $1;
+vector<int> ${2:a}($1);
+for(int i=0; i<$1; i++){ cin >> $2[i];}
+${0}
+endsnippet
+
+
+#		+-----------------+
+#		|
+#		|	Output & Trace
+#		|
+#		+-----------------+
+snippet cout "cout val endl" i
+cout << ${1:} << "\n";${2}
+endsnippet
+
+
+
+snippet coutvec1D "cout v<T> endl" i
+for(auto it=${1:a}.begin(); it!=$1.end(); it++){
+	cout << *it << " \n"[it+1==$1.end()];
+}${2}
+endsnippet
+
+snippet coutvec2D "cout vv<T> endl" i
+for(auto x:${1:big}){
+	for(auto it=x.begin(); it!=x.end(); it++){
+		cout << *it << " \n"[it+1==x.end()];
+	}
+}${2}
+endsnippet
+
+
+snippet cout_xqueue "cout .top-.pop- endl" i
+while(!${1:}.empty()){
+	cout << $1.${2:top}() << ' ';
+	$1.pop();
+}
+cout << "\n";${3}
+endsnippet
+
+snippet couts "cout val space" i
+cout << ${1:} << ' ';${2}
+endsnippet
+
+snippet cout_xyes "cout yes endl" i
+cout << "YES" << "\n";${0}
+endsnippet
+
+snippet cout_xnoo "cout no endl" i
+cout << "NO" << "\n";${0}
+endsnippet
+
+snippet ext "extend cout" i
+<< ' ' << ${0}
+endsnippet
+
+#		+-----------------+
+#		|
+#		|	Loops
+#		|
+#		+-----------------+
+# Missing stuff in ~/.vim/Ultisnips/c.snippets
+snippet fore "for each in container" i
+for(auto ${1:x}:${2:container}){
+	${3}
+}
+${4}
+endsnippet
+
+snippet foritr "for loop iterator" i
+for(auto it=${1:v}.begin(); it!=$1.end(); it++){
+	${2}
+}
+${3}
+endsnippet
+
+snippet revit "itr-loop" i
+for(auto it=${1:}.begin(); it!=$1.end(); it++){
+	${2:}
+}
+endsnippet
+#		+-----------------+
+#		|
+#		|	std builtins
+#		|
+#		+-----------------+
+snippet std_all "all a" i
+${1:}.begin(),$1.end()
+endsnippet
+
+snippet stdf "std operation" i
+${1:lower_bound}(${2:}.begin(),$2.end(), ${3})${4}
+endsnippet
+snippet std_count "count vals in a" i
+count(${1}.begin(),$1.end(), ${2})${3}
+endsnippet
+
+snippet std_sort "sort vector a" i
+sort(${1:}.begin(),$1.end());$2
+endsnippet
+
+snippet std_reverse "reverse vector a" i
+reverse(${1:}.begin(),$1.end());
+endsnippet
+
+snippet std_revsort "rev-sort vector a" i
+sort(${1:}.rbegin(),$1.rend());
+endsnippet
+
+snippet std_maxof "max_element" i
+max_element(${1:}.begin(),$1.end())${2}
+endsnippet
+
+snippet std_minof "min_element" i
+min_element(${1:}.begin(),$1.end())${2}
+endsnippet
+
+#		+-----------------+
+#		|
+#		|	Custom snips
+#		|
+#		+-----------------+
+snippet lenof "int size a" i
+(int)${0:}.size()
+endsnippet
+
+snippet amax "a=max(a,b)" i
+${1:first} = max($1, ${2:second});
+endsnippet
+
+snippet amin "a=min(a,b)" i
+${1:first} = min($1, ${2:second});
+endsnippet
+
+
+snippet ass "a.assign(b,c)" i
+${1:}.assign(${2:}, ${3:});
+endsnippet
+
+
+
+#		+-----------------+
+#		|
+#		|	Loops
+#		|
+#		+-----------------+
+snippet for "for loop custom" i
+for(${1:int} ${2:i}=${3:0}; $2${4:<}${5:n}; $2${6:++}){
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for-loop-i inc" i
+for(int i=${1:0}; i<${2:n}; i++){
+	${3}
+}
+${4}
+endsnippet
+
+snippet forb "for-loop-i dec" i
+for(int i=${1:n-1}; i>=${2:0}; i--){
+	${3}
+}
+endsnippet
+
+snippet forj "for-loop-j inc" i
+for(int j=${1:0}; j<${2:n}; j++){
+	${3}
+}
+endsnippet
+
+# snippet rep "for-loop-i inc" i
+# for(int i=${1:0}; i<${2:n}; i++){
+#     ${3}
+# }
+# ${4}
+# endsnippet
+
+
+snippet put_val "put val" i
+cout << ${1:ans} << '\n';
+return;
+endsnippet
+
+snippet put_vec1D "put v<T> endl" i
+for (auto it = ${1:a}.begin(); it != $1.end(); it++) {
+	cout << *it << " \n"[it + 1 == $1.end()];
+}
+return;
+endsnippet
+
+snippet put_vec2D "put vv<T> endl" i
+for (auto x : ${1:big}) {
+	for (auto it = x.begin(); it != x.end(); it++) {
+		cout << *it << " \n"[it + 1 == x.end()];
+	}
+}
+return;
+endsnippet
+
+
+snippet hard "nothing" i
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+#ifdef local
+	#include "debug.h"
+#else
+	#pragma GCC optimize("O3,Ofast,unroll-loops")
+	#define _(...)
+#endif	
+int N = 200005, mod = 1000000007, mod2 = 998244353;
+
+void test_case(int _i = 1)
+{
+	${2}
+}
+
+void _init_()
+{
+}
+int32_t main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	clock_t c = clock();
+	_init_();
+	int T = 1;${1:
+	cin >> T;}
+	for (int i = 1; i <= T; i++) {
+		test_case(i);
+	}
+	cerr << "\n time	" << (clock() - c) / 1e3 << "ms";
+}
+endsnippet
+
+
+snippet long "mega" i
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+// {@
+#ifdef local
+#include "debug.h"
+#else
+#pragma GCC optimize("O3,Ofast,unroll-loops")
+#define _(...)
+#endif
+
+using ll = long long;
+using vi = vector<int>;
+using vc = vector<char>;
+using vs = vector<string>;
+using vvi = vector<vector<int>>;
+using mii = map<int, int>;
+using pii = pair<int, int>;
+#define subT template <class T>
+#define subTU template <class T, class U>
+#define subTA template <class T, class... A>
+subT using pri = priority_queue<T>;
+subT using rpi = priority_queue<T, vector<T>, greater<T>>;
+
+#define rep(i, a, b) for (int i = a; i < (int)b; i++)
+#define rev(i, a, b) for (int i = a; i > (int)b; i--)
+#define revit(a) for (auto it = (a).begin(); it != (a).end(); it++)
+#define each(x, a) for (auto& x : a)
+#define make(a, b, c) (a).assign(b, c)
+#define all(a) (a).begin(), (a).end()
+#define rall(a) reverse((a).begin(), (a).end())
+
+#define read(T, ...) \
+	T __VA_ARGS__;   \
+	rd(__VA_ARGS__)
+subT void rd(T& a);
+subT void rd(vector<T>& a);
+subT void rd(vector<vector<T>>& a);
+subTA void rd(T& x, A&... a);
+subT void print(T a);
+subT void print(vector<T> a);
+subT void print(vector<vector<T>> a);
+subTA void print(T x, A... a);
+
+subT T min(vector<T> a) { return *min_element(all(a)); }
+subT T max(vector<T> a) { return *max_element(all(a)); }
+subTU void amin(T& a, U b);
+subTU void amax(T& a, U b);
+subT vector<T> prefix(vector<T> a);
+subT vector<T> suffix(vector<T> a);
+subT T sum(vector<T> a);
+#define put(x)    \
+	{             \
+		print(x); \
+		return;   \
+	}
+#define pb push_back
+#define cts(a, b) count(all(a), b)
+#define ceil(a, b) ((a + b - 1) / b)
+#define nc2(n) ((n * (n - 1)) / 2)
+
+subT map<T, int> get_map(vector<T> u);
+subT set<T> get_set(vector<T> u);
+subT multiset<T> get_multiset(vector<T> u);
+vector<vector<int>> get_grid(vector<string> g);
+
+int N = 2e5 + 5, mod = 1e9 + 7, mod2 = 998244353;
+long long inf = (sizeof(int) == sizeof(ll)) ? LLONG_MAX : INT_MAX;
+long long ninf = (sizeof(int) == sizeof(ll)) ? LLONG_MIN : INT_MIN;
+long double eps = 1e-6, pi = 2 * acos(0.0), E = exp(1.0), INF = 1e18;
+
+vector<int> primes;
+void sieve(int n);
+bool is_prime(int n);
+int madd(int a, int b);
+int msub(int a, int b);
+int mmul(int a, int b);
+int POW(int x, int y, int a);
+bool is_pal(string s);
+// @}
+
+void test_case(int _i = 1)
+{
+	${2:}
+}
+
+void _init_()
+{
+}
+
+int32_t main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	clock_t c = clock();
+	_init_();
+	int T = 1;${1:
+	cin >> T;}
+	for (int i = 1; i <= T; i++) {
+		test_case(i);
+	}
+	cerr << "\n time	" << (clock() - c) / 1e3 << "ms";
+}
+
+// {@ i/o template
+subT void rd(T& a)
+{
+	cin >> a;
+}
+subT void rd(vector<T>& a) { each(x, a) rd(x); }
+subT void rd(vector<vector<T>>& a) { each(x, a) rd(x); }
+subTA void rd(T& x, A&... a)
+{
+	cin >> x;
+	rd(a...);
+}
+subT void print(T a) { cout << a << '\n'; }
+subT void print(vector<T> a)
+{
+	int n = a.size();
+	rep(i, 0, n) { cout << a[i] << " \n"[i == n - 1]; }
+}
+subT void print(vector<vector<T>> a) { each(x, a) print(x); }
+subTA void print(T x, A... a)
+{
+	cout << x << ' ';
+	print(a...);
+}
+// @}
+// {@ helper functions
+subT vector<T> prefix(vector<T> a)
+{
+	int n = a.size();
+	for (int i = 1; i < n; i++) {
+		a[i] += a[i - 1];
+	}
+	return a;
+}
+subT vector<T> suffix(vector<T> a)
+{
+	int n = a.size();
+	for (int i = n - 2; i >= 0; i--) {
+		a[i] += a[i + 1];
+	}
+	return a;
+}
+subT T sum(vector<T> a)
+{
+	int ans = 0;
+	for (auto x : a) {
+		ans += x;
+	}
+	return ans;
+}
+subTU void amin(T& a, U b)
+{
+	if (a > b)
+		a = b;
+}
+subTU void amax(T& a, U b)
+{
+	if (a < b)
+		a = b;
+}
+bool is_pal(string s)
+{
+	if (s.empty()) {
+		return 0;
+	}
+	string r = s;
+	reverse(r.begin(), r.end());
+	return r == s;
+}
+// @}
+// {@ fetch new data structure
+subT map<T, int> get_map(vector<T> u)
+{
+	map<T, int> mp;
+	for (auto x : u) {
+		mp[x]++;
+	}
+	return mp;
+}
+subT set<T> get_set(vector<T> u)
+{
+	set<T> s;
+	for (auto x : u) {
+		s.insert(x);
+	}
+	return s;
+}
+subT multiset<T> get_multiset(vector<T> u)
+{
+	multiset<int> s;
+	for (auto x : u) {
+		s.insert(x);
+	}
+	return s;
+}
+vector<vector<int>> get_grid(vector<string> g, char oneChar = '\n')
+{
+	if (g.empty()) {
+		return {};
+	};
+	int n = g.size(), m = g[0].size();
+	vector<vector<int>> a(n, vector<int>(m));
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (oneChar == '\n') {
+				a[i][j] = g[i][j] - '0';
+			} else {
+				a[i][j] = (g[i][j] == oneChar) ? 1 : 0;
+			}
+		}
+	}
+	return a;
+}
+// @}
+// {@ number theory
+void sieve(int n = 1e6 + 6)
+{
+	primes.resize(n + 1, 0ll);
+	primes[1] = 1;
+	for (int p = 2; p * p <= n; p++) {
+		if (!primes[p]) {
+			primes[p] = p;
+			for (int q = p * p; q < n + 1; q += p) {
+				primes[q] = p;
+			}
+		}
+	}
+	for (int p = 2; p <= n; p++) {
+		if (!primes[p]) {
+			primes[p] = p;
+		}
+	}
+}
+bool is_prime(int n)
+{
+	if (!primes.empty() && primes.size() > n) {
+		return (n > 1 && primes[n] == n) ? true : false;
+	}
+	if (n <= 4) {
+		return n == 2 or n == 3;
+	}
+	for (int i = 3; i * i <= n; i++) {
+		if (n % i == 0)
+			return 0;
+	}
+	return 1;
+}
+int madd(int a, int b)
+{
+	a = (a + 0ll + b) % mod;
+	return (a < 0) ? a + mod : a;
+}
+int msub(int a, int b)
+{
+	a = (a - b + mod) % mod;
+	return (a < 0) ? a + mod : a;
+}
+int mmul(int a, int b)
+{
+	a = (a * 1ll * b) % mod;
+	return (a < 0) ? a + mod : a;
+}
+int POW(int x, int y, int a = 1)
+{
+	while (y > 0) {
+		if (y & 1) {
+			a = (a * 1ll * x) % mod;
+			if (a < 0)
+				a += mod;
+		}
+		x = (x * 1ll * x) % mod;
+		if (x < 0)
+			x += mod;
+		y /= 2;
+	}
+	return a;
+}
+// @}
+endsnippet
