@@ -1,15 +1,16 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-bool is_pal(string s){
-	if(s.empty()){
+bool is_pal(string s)
+{
+	if (s.empty()) {
 		return 0;
 	}
-	string r=s;
-	reverse(r.begin(),r.end());
-	return r==s;
+	string r = s;
+	reverse(r.begin(), r.end());
+	return r == s;
 }
 
-int main(){
-
+int main()
+{
 }
